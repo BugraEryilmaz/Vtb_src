@@ -69,6 +69,8 @@ cd riscv-gnu-toolchain
 sudo make linux
 ```
 
+If you install the toolchain in a different directory, you need to change the RVTOOLPREFIX variable in the MakeFile shared in the template folder structure.
+
 # Compilation
 
 If your verilator is installed in a different directory, you need to change the VERILATOR_ROOT variable in the Vtb.mk file to your verilator installation directory.
