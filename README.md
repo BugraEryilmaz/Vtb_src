@@ -10,11 +10,6 @@ sudo apt update
 sudo apt-get install g++-13 gcc-13
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-13 100
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 100
-# if you install other versions of g++, add them to the alternatives list with a lower priority number (e.g. 90) so that the default version is version 13
-# Other options are:
-#   clang version 17
-#   msvc version 19.29
-#   apple clang version 15
 ```
 
 -   Verilator
@@ -93,3 +88,13 @@ This will generate the debug adapter executable 'Vtb' in the root directory. You
 # Common Issues
 
 While running the extension, if the debug session does not start and if it does not show any error, then try to run the Vtb executable you compiled in terminal. If there is an error in the compiled Vtb executable, it will print the error message. If you see empty output waiting for input, then the executable is working fine and you can exit using Ctrl+C.
+
+-  Permisson denied
+    
+    ```bash
+    chmod +x Vtb
+    ```
+
+-  ./Vtb: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.32' not found (required by ./Vtb)
+
+    This error is due to the version of the glibc library. That usually happens when you compile the debug adapter in a newer version of the OS and try to run it in an older version. To fix this, compile the debug adapter in the same machine where you are running the debug adapter.
