@@ -1,6 +1,6 @@
 # Terminology
-Debugger/Debug adapter: This is the Vtb executable compiled in this folder. It is the main binary that simulates a given assembly code. The extension runs this executable and sends appropriate commands to simulate the expected behavior. (It is like GDB for debugging C code, but Vtb is for RISC-V assembly and specialized for the CS200 course, so it has additional interfaces like virtual Gecko5 Board. Its interface is different from GDB.)
-Extension: This is the VS code extension with the name cs200. It creates the GUI shown in the VS code screen and sends the appropriate commands to the debugger.
+-  Debugger/Debug adapter: This is the Vtb executable compiled in this folder. It is the main binary that simulates a given assembly code. The extension runs this executable and sends appropriate commands to simulate the expected behavior. (It is like GDB for debugging C code, but Vtb is for RISC-V assembly and specialized for the CS200 course, so it has additional interfaces like virtual Gecko5 Board. Its interface is different from GDB.)
+-  Extension: This is the VS code extension with the name cs200. It creates the GUI shown in the VS code screen and sends the appropriate commands to the debugger.
 
 # Prerequisites
 
