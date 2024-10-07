@@ -290,10 +290,14 @@ public:
     if (pc() == 0)
       return file;
 #ifdef __MEM_H__
-    return pcToLine.getFileName(pc());
+      auto fileName = pcToLine.getFileName(pc());
+      if (fileName) return fileName;
+      return file;
 #else
     if (isValid_mem_init(*g_top)) {
-      return pcToLine.getFileName(pc());
+      auto fileName = pcToLine.getFileName(pc());
+      if (fileName) return fileName;
+      return file;
     } else {
       return file;
     }
