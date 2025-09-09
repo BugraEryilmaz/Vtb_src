@@ -12,7 +12,19 @@ PERL = perl
 # Python3 executable (from $PYTHON3, defaults to 'python3' if not set)
 PYTHON3 = python3
 # Path to Verilator kit (from $VERILATOR_ROOT)
-VERILATOR_ROOT = /usr/share/verilator
+# Try to infer VERILATOR_ROOT from the verilator in PATH if not explicitly set
+VERILATOR_ROOT ?= $(shell \
+	if [ -n "$$VERILATOR_ROOT" ]; then \
+		echo "$$VERILATOR_ROOT"; \
+	elif command -v verilator >/dev/null 2>&1; then \
+		verilator -V 2>/dev/null | sed -n 's/^[[:space:]]*VERILATOR_ROOT[[:space:]]*=[[:space:]]*//p' | tail -n 1; \
+	fi)
+
+# Fail early with a helpful message if we still can't find verilated.mk
+ifeq ($(strip $(VERILATOR_ROOT)),)
+  $(error VERILATOR_ROOT is not set and could not be derived from PATH. Ensure Verilator is installed or export VERILATOR_ROOT.)
+endif
+
 # SystemC include directory with systemc.h (from $SYSTEMC_INCLUDE)
 SYSTEMC_INCLUDE ?= 
 # SystemC library directory with libsystemc.a (from $SYSTEMC_LIBDIR)
