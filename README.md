@@ -16,7 +16,7 @@ sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-13 100
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 100
 ```
 
--   Verilator
+-   Verilator v5.032
 
 ```bash
 # Make sure you have g++ and gcc version 13 before this step, or you will need to install again
@@ -32,7 +32,7 @@ unsetenv VERILATOR_ROOT  # For csh; ignore error if on bash
 unset VERILATOR_ROOT  # For bash
 cd verilator
 git pull         # Make sure git repository is up-to-date
-git checkout stable      # Use most recent stable release
+git checkout v5.032  # Checkout the desired version
 autoconf         # Create ./configure script
 ./configure      # Configure and create Makefile
 make -j  # Build Verilator itself (if error, try just 'make')
