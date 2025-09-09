@@ -7,10 +7,12 @@
 default: Vtb
 
 ### Constants...
-# Perl executable (from $PERL)
+# Perl executable (from $PERL, defaults to 'perl' if not set)
 PERL = perl
+# Python3 executable (from $PYTHON3, defaults to 'python3' if not set)
+PYTHON3 = python3
 # Path to Verilator kit (from $VERILATOR_ROOT)
-VERILATOR_ROOT = /usr/local/share/verilator
+VERILATOR_ROOT = /usr/share/verilator
 # SystemC include directory with systemc.h (from $SYSTEMC_INCLUDE)
 SYSTEMC_INCLUDE ?= 
 # SystemC library directory with libsystemc.a (from $SYSTEMC_LIBDIR)
@@ -52,25 +54,24 @@ VM_USER_CLASSES = \
 	pcToLine \
 	verilator \
 
-
 ### Default rules...
 # Include list of all generated classes
 include Vtb_classes.mk
 # Include global rules
 include $(VERILATOR_ROOT)/include/verilated.mk
 
-mem.o: mem.cpp
-	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
-base64.o: base64.cpp
-	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
-dapDefines.o: dapDefines.cpp
-	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
-debugAdapter.o: debugAdapter.cpp
-	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
-pcToLine.o: pcToLine.cpp
-	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
-verilator.o: verilator.cpp
-	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
+mem.o: mem.cpp 
+	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST)  -c -o $@ $<
+base64.o: base64.cpp 
+	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST)  -c -o $@ $<
+dapDefines.o: dapDefines.cpp 
+	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST)  -c -o $@ $<
+debugAdapter.o: debugAdapter.cpp 
+	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST)  -c -o $@ $<
+pcToLine.o: pcToLine.cpp 
+	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST)  -c -o $@ $<
+verilator.o: verilator.cpp 
+	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST)  -c -o $@ $<
 
 ### Link rules... (from --exe)
 Vtb: $(VK_USER_OBJS) $(VK_GLOBAL_OBJS) $(VM_PREFIX)__ALL.a $(VM_HIER_LIBS)

@@ -17,7 +17,7 @@
 #ifndef VL_DPIDECL_but_rd_
 #define VL_DPIDECL_but_rd_
 int but_rd() {
-    // DPI export at /home/bugra/TA/CS200/cs-200/src/DebugAdapter/../cpu/but.sv:145:19
+    // DPI export at /home/bugra/PhD/TA/cs-200/infrastructure/debugger/../processor/but.sv:145:19
     return Vtb::but_rd();
 }
 #endif
@@ -25,7 +25,7 @@ int but_rd() {
 #ifndef VL_DPIDECL_but_wr_
 #define VL_DPIDECL_but_wr_
 void but_wr(unsigned int en, unsigned int val) {
-    // DPI export at /home/bugra/TA/CS200/cs-200/src/DebugAdapter/../cpu/but.sv:149:19
+    // DPI export at /home/bugra/PhD/TA/cs-200/infrastructure/debugger/../processor/but.sv:149:19
     return Vtb::but_wr(en, val);
 }
 #endif
@@ -33,7 +33,7 @@ void but_wr(unsigned int en, unsigned int val) {
 #ifndef VL_DPIDECL_cpu_get_csr_
 #define VL_DPIDECL_cpu_get_csr_
 unsigned int cpu_get_csr(unsigned int idx) {
-    // DPI export at /home/bugra/TA/CS200/cs-200/src/DebugAdapter/../cpu/cpu.sv:728:27
+    // DPI export at /home/bugra/PhD/TA/cs-200/infrastructure/debugger/../processor/cpu.sv:728:27
     return Vtb::cpu_get_csr(idx);
 }
 #endif
@@ -41,7 +41,7 @@ unsigned int cpu_get_csr(unsigned int idx) {
 #ifndef VL_DPIDECL_cpu_get_gpr_
 #define VL_DPIDECL_cpu_get_gpr_
 unsigned int cpu_get_gpr(unsigned int idx) {
-    // DPI export at /home/bugra/TA/CS200/cs-200/src/DebugAdapter/../cpu/cpu.sv:721:27
+    // DPI export at /home/bugra/PhD/TA/cs-200/infrastructure/debugger/../processor/cpu.sv:721:27
     return Vtb::cpu_get_gpr(idx);
 }
 #endif
@@ -49,7 +49,7 @@ unsigned int cpu_get_gpr(unsigned int idx) {
 #ifndef VL_DPIDECL_cpu_get_ins_
 #define VL_DPIDECL_cpu_get_ins_
 unsigned int cpu_get_ins() {
-    // DPI export at /home/bugra/TA/CS200/cs-200/src/DebugAdapter/../cpu/cpu.sv:717:27
+    // DPI export at /home/bugra/PhD/TA/cs-200/infrastructure/debugger/../processor/cpu.sv:717:27
     return Vtb::cpu_get_ins();
 }
 #endif
@@ -57,7 +57,7 @@ unsigned int cpu_get_ins() {
 #ifndef VL_DPIDECL_cpu_get_pc_
 #define VL_DPIDECL_cpu_get_pc_
 unsigned int cpu_get_pc() {
-    // DPI export at /home/bugra/TA/CS200/cs-200/src/DebugAdapter/../cpu/cpu.sv:747:27
+    // DPI export at /home/bugra/PhD/TA/cs-200/infrastructure/debugger/../processor/cpu.sv:747:27
     return Vtb::cpu_get_pc();
 }
 #endif
@@ -65,7 +65,7 @@ unsigned int cpu_get_pc() {
 #ifndef VL_DPIDECL_cpu_get_st_
 #define VL_DPIDECL_cpu_get_st_
 unsigned int cpu_get_st() {
-    // DPI export at /home/bugra/TA/CS200/cs-200/src/DebugAdapter/../cpu/cpu.sv:751:27
+    // DPI export at /home/bugra/PhD/TA/cs-200/infrastructure/debugger/../processor/cpu.sv:751:27
     return Vtb::cpu_get_st();
 }
 #endif
@@ -73,7 +73,7 @@ unsigned int cpu_get_st() {
 #ifndef VL_DPIDECL_cpu_set_csr_
 #define VL_DPIDECL_cpu_set_csr_
 void cpu_set_csr(unsigned int idx, unsigned int val) {
-    // DPI export at /home/bugra/TA/CS200/cs-200/src/DebugAdapter/../cpu/cpu.sv:761:19
+    // DPI export at /home/bugra/PhD/TA/cs-200/infrastructure/debugger/../processor/cpu.sv:761:19
     return Vtb::cpu_set_csr(idx, val);
 }
 #endif
@@ -81,7 +81,7 @@ void cpu_set_csr(unsigned int idx, unsigned int val) {
 #ifndef VL_DPIDECL_cpu_set_gpr_
 #define VL_DPIDECL_cpu_set_gpr_
 void cpu_set_gpr(unsigned int idx, unsigned int val) {
-    // DPI export at /home/bugra/TA/CS200/cs-200/src/DebugAdapter/../cpu/cpu.sv:755:19
+    // DPI export at /home/bugra/PhD/TA/cs-200/infrastructure/debugger/../processor/cpu.sv:755:19
     return Vtb::cpu_set_gpr(idx, val);
 }
 #endif
@@ -89,7 +89,7 @@ void cpu_set_gpr(unsigned int idx, unsigned int val) {
 #ifndef VL_DPIDECL_cpu_set_pc_
 #define VL_DPIDECL_cpu_set_pc_
 void cpu_set_pc(unsigned int val) {
-    // DPI export at /home/bugra/TA/CS200/cs-200/src/DebugAdapter/../cpu/cpu.sv:783:19
+    // DPI export at /home/bugra/PhD/TA/cs-200/infrastructure/debugger/../processor/cpu.sv:783:19
     return Vtb::cpu_set_pc(val);
 }
 #endif
@@ -97,7 +97,7 @@ void cpu_set_pc(unsigned int val) {
 #ifndef VL_DPIDECL_lcd_rd_
 #define VL_DPIDECL_lcd_rd_
 int lcd_rd(unsigned int idx) {
-    // DPI export at /home/bugra/TA/CS200/cs-200/src/DebugAdapter/../cpu/lcd.sv:46:19
+    // DPI export at /home/bugra/PhD/TA/cs-200/infrastructure/debugger/../processor/lcd.sv:46:19
     return Vtb::lcd_rd(idx);
 }
 #endif
@@ -105,7 +105,7 @@ int lcd_rd(unsigned int idx) {
 #ifndef VL_DPIDECL_lcd_wr_
 #define VL_DPIDECL_lcd_wr_
 void lcd_wr(unsigned int idx, unsigned int val) {
-    // DPI export at /home/bugra/TA/CS200/cs-200/src/DebugAdapter/../cpu/lcd.sv:53:19
+    // DPI export at /home/bugra/PhD/TA/cs-200/infrastructure/debugger/../processor/lcd.sv:53:19
     return Vtb::lcd_wr(idx, val);
 }
 #endif
@@ -113,7 +113,7 @@ void lcd_wr(unsigned int idx, unsigned int val) {
 #ifndef VL_DPIDECL_led_rd_
 #define VL_DPIDECL_led_rd_
 void led_rd(unsigned int rgb, svBitVecVal* val) {
-    // DPI export at /home/bugra/TA/CS200/cs-200/src/DebugAdapter/../cpu/led.sv:94:19
+    // DPI export at /home/bugra/PhD/TA/cs-200/infrastructure/debugger/../processor/led.sv:94:19
     return Vtb::led_rd(rgb, val);
 }
 #endif
@@ -121,7 +121,7 @@ void led_rd(unsigned int rgb, svBitVecVal* val) {
 #ifndef VL_DPIDECL_led_wr_
 #define VL_DPIDECL_led_wr_
 void led_wr(unsigned int rgb, const svBitVecVal* val) {
-    // DPI export at /home/bugra/TA/CS200/cs-200/src/DebugAdapter/../cpu/led.sv:108:19
+    // DPI export at /home/bugra/PhD/TA/cs-200/infrastructure/debugger/../processor/led.sv:108:19
     return Vtb::led_wr(rgb, val);
 }
 #endif

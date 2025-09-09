@@ -82,28 +82,28 @@ ReturnType defaultFn(Args... args) {
 }
 
 // For our interface we need the following members
-GENERATE_GETTER_VAL(led_r, VlWide<4>);
-GENERATE_GETTER_VAL(led_g, VlWide<4>);
-GENERATE_GETTER_VAL(led_b, VlWide<4>);
-GENERATE_GETTER_VAL(sevensegment_1, uint);
-GENERATE_GETTER_VAL(sevensegment_2, uint);
-GENERATE_GETTER_VAL(sevensegment_3, uint);
-GENERATE_GETTER_VAL(sevensegment_4, uint);
-GENERATE_GETTER_VAL(button_top, uint);
-GENERATE_GETTER_VAL(button_bottom, uint);
-GENERATE_GETTER_VAL(button_left, uint);
-GENERATE_GETTER_VAL(button_right, uint);
-GENERATE_GETTER_VAL(button_center, uint);
-GENERATE_GETTER_VAL(joystick_up, uint);
-GENERATE_GETTER_VAL(joystick_down, uint);
-GENERATE_GETTER_VAL(joystick_left, uint);
-GENERATE_GETTER_VAL(joystick_right, uint);
-GENERATE_GETTER_VAL(joystick_pressed, uint);
-GENERATE_GETTER_VAL(dip_switches, uint);
-GENERATE_GETTER_VAL(irq_e, uint);
-GENERATE_GETTER_VAL(irq_t, uint);
-GENERATE_GETTER_VAL(rst_n, uint);
-GENERATE_GETTER_VAL(clk, uint);
+GENERATE_GETTER_VAL(led_r_o, VlWide<4>);
+GENERATE_GETTER_VAL(led_g_o, VlWide<4>);
+GENERATE_GETTER_VAL(led_b_o, VlWide<4>);
+GENERATE_GETTER_VAL(sevensegment_1_o, uint);
+GENERATE_GETTER_VAL(sevensegment_2_o, uint);
+GENERATE_GETTER_VAL(sevensegment_3_o, uint);
+GENERATE_GETTER_VAL(sevensegment_4_o, uint);
+GENERATE_GETTER_VAL(button_top_i, uint);
+GENERATE_GETTER_VAL(button_bottom_i, uint);
+GENERATE_GETTER_VAL(button_left_i, uint);
+GENERATE_GETTER_VAL(button_right_i, uint);
+GENERATE_GETTER_VAL(button_center_i, uint);
+GENERATE_GETTER_VAL(joystick_up_i, uint);
+GENERATE_GETTER_VAL(joystick_down_i, uint);
+GENERATE_GETTER_VAL(joystick_left_i, uint);
+GENERATE_GETTER_VAL(joystick_right_i, uint);
+GENERATE_GETTER_VAL(joystick_pressed_i, uint);
+GENERATE_GETTER_VAL(dip_switches_i, uint);
+GENERATE_GETTER_VAL(irq_e_i, uint);
+GENERATE_GETTER_VAL(irq_t_i, uint);
+GENERATE_GETTER_VAL(rst_ni, uint);
+GENERATE_GETTER_VAL(clk_i, uint);
 
 // For our interface we need the following functions
 GENERATE_GETTER_FN(cpu_get_ins, "TOP.tb.u_cpu", uint, void)

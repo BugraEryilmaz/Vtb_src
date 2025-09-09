@@ -31,26 +31,26 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb VL_NOT_FINAL : public VerilatedModel {
     // PORTS
     // The application code writes and reads these signals to
     // propagate new values into/out from the Verilated model.
-    VL_IN8(&rst_n,0,0);
-    VL_IN8(&button_top,0,0);
-    VL_IN8(&button_bottom,0,0);
-    VL_IN8(&button_left,0,0);
-    VL_IN8(&button_right,0,0);
-    VL_IN8(&button_center,0,0);
-    VL_IN8(&joystick_up,0,0);
-    VL_IN8(&joystick_down,0,0);
-    VL_IN8(&joystick_left,0,0);
-    VL_IN8(&joystick_right,0,0);
-    VL_IN8(&joystick_pressed,0,0);
-    VL_OUT8(&sevensegment_1,7,0);
-    VL_OUT8(&sevensegment_2,7,0);
-    VL_OUT8(&sevensegment_3,7,0);
-    VL_OUT8(&sevensegment_4,7,0);
-    VL_IN8(&dip_switches,7,0);
-    VL_OUTW(&led_r,119,0,4);
-    VL_OUTW(&led_g,119,0,4);
-    VL_OUTW(&led_b,119,0,4);
-    VL_IN8(&clk,0,0);
+    VL_IN8(&rst_ni,0,0);
+    VL_IN8(&button_top_i,0,0);
+    VL_IN8(&button_bottom_i,0,0);
+    VL_IN8(&button_left_i,0,0);
+    VL_IN8(&button_right_i,0,0);
+    VL_IN8(&button_center_i,0,0);
+    VL_IN8(&joystick_up_i,0,0);
+    VL_IN8(&joystick_down_i,0,0);
+    VL_IN8(&joystick_left_i,0,0);
+    VL_IN8(&joystick_right_i,0,0);
+    VL_IN8(&joystick_pressed_i,0,0);
+    VL_OUT8(&sevensegment_1_o,7,0);
+    VL_OUT8(&sevensegment_2_o,7,0);
+    VL_OUT8(&sevensegment_3_o,7,0);
+    VL_OUT8(&sevensegment_4_o,7,0);
+    VL_IN8(&dip_switches_i,7,0);
+    VL_OUTW(&led_r_o,119,0,4);
+    VL_OUTW(&led_g_o,119,0,4);
+    VL_OUTW(&led_b_o,119,0,4);
+    VL_IN8(&clk_i,0,0);
 
     // CELLS
     // Public to allow access to /* verilator public */ items.

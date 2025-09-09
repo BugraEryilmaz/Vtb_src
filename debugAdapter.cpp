@@ -86,6 +86,14 @@ int main(int argc, char *argv[]) {
     std::filesystem::path logFile = argv[1];
     logFile.replace_filename("log.txt");
     log = dap::file(logFile.c_str());
+    // Move std:err to err.log file if debugging
+    std::filesystem::path errFile = argv[1];
+    errFile.replace_filename("err.log");
+    auto file_ptr = fopen(errFile.c_str(), "w");
+    if (!file_ptr) {
+        throw std::runtime_error{"Unable to open file"};
+    }
+    dup2(fileno(file_ptr), fileno(stderr));
   }
 
   // Create the DAP session.
@@ -106,11 +114,11 @@ int main(int argc, char *argv[]) {
   Event terminate;
 
   // Construct the debugger.
-  sim_t sim;
+  sim_t sim(log ? true: false);
   std::thread *t = NULL;
 
   // Event handlers from the Debugger.
-  auto onsim_tEvent = [&](sim_t::Event onEvent) {
+  sim_t::EventHandler onsim_tEvent = [&](sim_t::Event onEvent, std::optional<std::string> message) {
     switch (onEvent) {
     case sim_t::Event::Stepped: {
       // The debugger has single-line stepped. Inform the client.
@@ -144,7 +152,16 @@ int main(int argc, char *argv[]) {
       session->send(event);
       break;
     }
+    case sim_t::Event::Output: {
+      if (message) {
+        dap::OutputEvent event;
+        event.category = "console";
+        event.output = message.value();
+        session->send(event);
+      }
+      break;
     }
+  }
   };
 
   // set the event handlers.
@@ -283,35 +300,28 @@ int main(int argc, char *argv[]) {
   session->registerHandler(
       [&](const dap::SetVariableRequest &request)
           -> dap::ResponseOrError<dap::SetVariableResponse> {
-        if (request.variablesReference != variablesReferenceId) {
+        if (request.variablesReference == variablesReferenceId) {
+          // Special case PC
+          if (request.name == "PC") {
+            sim.setPC(std::stoul(request.value, 0, 0));
+          } else {
+            // General purpose registers
+            auto regID = sim.getRegIDFromName(request.name);
+            if (regID == -1) {
+              return dap::Error("Unknown variable '%s'", request.name.c_str());
+            }
+            sim.setReg(regID, std::stoul(request.value, 0, 0));
+          }
+        } else if (request.variablesReference == sysvariablesReferenceId) {
+          // Sys variables
+          auto regID = sim.getSysRegIDFromName(request.name);
+          if (regID == -1) {
+            return dap::Error("Unknown variable '%s'", request.name.c_str());
+          }
+          sim.setSysReg(regID, std::stoul(request.value, 0, 0));
+        } else {
           return dap::Error("Unknown variablesReference '%d'",
                             int(request.variablesReference));
-        }
-        bool exception = false;
-        std::istringstream converter(request.value.substr(2));
-        int unsigned val;
-        converter >> std::hex >> val;
-        if (request.name == "PC") {
-          sim.setPC(val);
-        } else {
-          if (request.name.compare(0, 1, "x") == 0) {
-            if (sim.is_number(request.name.substr(1))) {
-              int unsigned reg = std::stoul(request.name.substr(1));
-              if ((reg < 32) && (reg >= 0)) {
-                sim.setReg(reg, val);
-              } else {
-                exception = true;
-              }
-            } else {
-              exception = true;
-            }
-          } else {
-            exception = true;
-          }
-        }
-
-        if (exception) {
-          return dap::Error("Unknown variable '%s'", request.name.c_str());
         }
 
         dap::SetVariableResponse response;
@@ -360,7 +370,7 @@ int main(int argc, char *argv[]) {
   session->registerHandler([&](const dap::StepInRequest &) {
     // Step-in treated as step-over as there's only one stack frame.
     sim.runclk();
-    sim.onEvent(sim_t::Event::Stepped);
+    sim.onEvent(sim_t::Event::Stepped, std::nullopt);
     return dap::StepInResponse();
   });
 

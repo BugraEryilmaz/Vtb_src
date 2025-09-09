@@ -64,13 +64,11 @@ class alignas(VL_CACHE_LINE_BYTES)Vtb__Syms final : public VerilatedSyms {
 
     // METHODS
     const char* name() { return TOP.name(); }
-    void enqueueTriggeredEventForClearing(VlEvent& event) {
-#ifdef VL_DEBUG
-        if (VL_UNLIKELY(!event.isTriggered())) {
-            VL_FATAL_MT(__FILE__, __LINE__, __FILE__, "event passed to 'enqueueTriggeredEventForClearing' was not triggered");
+    void fireEvent(VlEvent& event) {
+        if (VL_LIKELY(!event.isTriggered())) {
+            __Vm_triggeredEvents.push_back(&event);
         }
-#endif
-        __Vm_triggeredEvents.push_back(&event);
+        event.fire();
     }
     void clearTriggeredEvents() {
         for (const auto eventp : __Vm_triggeredEvents) eventp->clearTriggered();

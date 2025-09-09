@@ -1,4 +1,5 @@
 #include <filesystem>
+#include <optional>
 #include <iostream>
 #include <stdio.h>
 
@@ -36,6 +37,9 @@ public:
   bool running = false;
   // Breakpoints
   std::unordered_map<std::string, std::unordered_map<int, bool>> breakpoints;
+  // logging
+  bool log = false;
+  
 
   // outputs
   dap::ledArray ledArray;
@@ -45,10 +49,10 @@ public:
   dap::Buttons buttons;
   dap::optional<dap::integer> dipSwitches;
 
-  enum class Event { BreakpointHit, Stepped, Paused, BoardUpdate };
-  using EventHandler = std::function<void(Event)>;
+  enum class Event { BreakpointHit, Stepped, Paused, BoardUpdate, Output };
+  using EventHandler = std::function<void(Event, std::optional<std::string>)>;
 
-  sim_t() {
+  sim_t(bool debug = false) {
     g_ctx = new VerilatedContext();
     g_vcd = new VerilatedVcdC();
     g_top = new Vtb(g_ctx);
@@ -59,6 +63,7 @@ public:
     g_ctx->traceEverOn(true);
 
     // for dpi functions
+    log = debug;
   }
 
   void registerEventHandlers(const EventHandler &handler) {
@@ -124,27 +129,27 @@ public:
       get_lcd_wr (*g_top)(3, req.sevenSegment.three.value(0));
     // board input state
     if (req.joystick.up)
-      set_joystick_up(*g_top, req.joystick.up.value(0));
+      set_joystick_up_i(*g_top, req.joystick.up.value(0));
     if (req.joystick.down)
-      set_joystick_down(*g_top, req.joystick.down.value(0));
+      set_joystick_down_i(*g_top, req.joystick.down.value(0));
     if (req.joystick.left)
-      set_joystick_left(*g_top, req.joystick.left.value(0));
+      set_joystick_left_i(*g_top, req.joystick.left.value(0));
     if (req.joystick.right)
-      set_joystick_right(*g_top, req.joystick.right.value(0));
+      set_joystick_right_i(*g_top, req.joystick.right.value(0));
     if (req.joystick.pressed)
-      set_joystick_pressed(*g_top, req.joystick.pressed.value(0));
+      set_joystick_pressed_i(*g_top, req.joystick.pressed.value(0));
     if (req.buttons.top)
-      set_button_top(*g_top, req.buttons.top.value(0));
+      set_button_top_i(*g_top, req.buttons.top.value(0));
     if (req.buttons.bottom)
-      set_button_bottom(*g_top, req.buttons.bottom.value(0));
+      set_button_bottom_i(*g_top, req.buttons.bottom.value(0));
     if (req.buttons.left)
-      set_button_left(*g_top, req.buttons.left.value(0));
+      set_button_left_i(*g_top, req.buttons.left.value(0));
     if (req.buttons.right)
-      set_button_right(*g_top, req.buttons.right.value(0));
+      set_button_right_i(*g_top, req.buttons.right.value(0));
     if (req.buttons.center)
-      set_button_center(*g_top, req.buttons.center.value(0));
+      set_button_center_i(*g_top, req.buttons.center.value(0));
     if (req.dip_switches)
-      set_dip_switches(*g_top, req.dip_switches.value(0));
+      set_dip_switches_i(*g_top, req.dip_switches.value(0));
     // memory states
     for (auto &mem : req.memory) {
       for (auto i = 0; i < mem.size; i++) {
@@ -167,28 +172,28 @@ public:
   dap::GetStateResponse getState(dap::GetStateRequest req) {
     dap::GetStateResponse res;
     // board output state
-    auto led_r = get_led_r(*g_top);
-    res.ledArray.r = convertToDapArray(led_r);
-    auto led_g = get_led_g(*g_top);
-    res.ledArray.g = convertToDapArray(led_g);
-    auto led_b = get_led_b(*g_top);
-    res.ledArray.b = convertToDapArray(led_b);
-    res.sevenSegment.zero = get_sevensegment_1(*g_top);
-    res.sevenSegment.one = get_sevensegment_2(*g_top);
-    res.sevenSegment.two = get_sevensegment_3(*g_top);
-    res.sevenSegment.three = get_sevensegment_4(*g_top);
+    auto led_r_o = get_led_r_o(*g_top);
+    res.ledArray.r = convertToDapArray(led_r_o);
+    auto led_g_o = get_led_g_o(*g_top);
+    res.ledArray.g = convertToDapArray(led_g_o);
+    auto led_b_o = get_led_b_o(*g_top);
+    res.ledArray.b = convertToDapArray(led_b_o);
+    res.sevenSegment.zero = get_sevensegment_1_o(*g_top);
+    res.sevenSegment.one = get_sevensegment_2_o(*g_top);
+    res.sevenSegment.two = get_sevensegment_3_o(*g_top);
+    res.sevenSegment.three = get_sevensegment_4_o(*g_top);
     // board input state
-    res.joystick.up = get_joystick_up(*g_top);
-    res.joystick.down = get_joystick_down(*g_top);
-    res.joystick.left = get_joystick_left(*g_top);
-    res.joystick.right = get_joystick_right(*g_top);
-    res.joystick.pressed = get_joystick_pressed(*g_top);
-    res.buttons.top = get_button_top(*g_top);
-    res.buttons.bottom = get_button_bottom(*g_top);
-    res.buttons.left = get_button_left(*g_top);
-    res.buttons.right = get_button_right(*g_top);
-    res.buttons.center = get_button_center(*g_top);
-    res.dip_switches = get_dip_switches(*g_top);
+    res.joystick.up = get_joystick_up_i(*g_top);
+    res.joystick.down = get_joystick_down_i(*g_top);
+    res.joystick.left = get_joystick_left_i(*g_top);
+    res.joystick.right = get_joystick_right_i(*g_top);
+    res.joystick.pressed = get_joystick_pressed_i(*g_top);
+    res.buttons.top = get_button_top_i(*g_top);
+    res.buttons.bottom = get_button_bottom_i(*g_top);
+    res.buttons.left = get_button_left_i(*g_top);
+    res.buttons.right = get_button_right_i(*g_top);
+    res.buttons.center = get_button_center_i(*g_top);
+    res.dip_switches = get_dip_switches_i(*g_top);
     // memory states
     dap::array<dap::SetMemory> memory;
     for (auto &mem : req.memory) {
@@ -215,10 +220,12 @@ public:
 
   void load(std::string file, std::string bin, std::string exe) {
     this->file = file;
-    std::filesystem::path dump = file;
-    dump.replace_filename("dump.vcd");
-    g_top->trace(g_vcd, 99);
-    g_vcd->open(dump.c_str());
+    if (log) {
+      std::filesystem::path dump = file;
+      dump.replace_filename("dump.vcd");
+      g_top->trace(g_vcd, 99);
+      g_vcd->open(dump.c_str());
+    }
 #ifdef __MEM_H__
     mem_init(bin.c_str());
     pcToLine.registerFile(exe.c_str());
@@ -229,10 +236,10 @@ public:
     }
 #endif
     // init
-    set_clk(*g_top, 1);
-    set_rst_n(*g_top, 0);
-    set_irq_e(*g_top, 0);
-    set_irq_t(*g_top, 0);
+    set_clk_i(*g_top, 1);
+    set_rst_ni(*g_top, 0);
+    set_irq_e_i(*g_top, 0);
+    set_irq_t_i(*g_top, 0);
     g_top->eval();
   }
 
@@ -290,14 +297,12 @@ public:
     if (pc() == 0)
       return file;
 #ifdef __MEM_H__
-      auto fileName = pcToLine.getFileName(pc());
-      if (fileName) return fileName;
-      return file;
+    auto fileName = pcToLine.getFileName(pc());
+    return fileName ? fileName : file;
 #else
     if (isValid_mem_init(*g_top)) {
       auto fileName = pcToLine.getFileName(pc());
-      if (fileName) return fileName;
-      return file;
+      return fileName ? fileName : file;
     } else {
       return file;
     }
@@ -320,11 +325,12 @@ public:
 
   void runclk() {
     // First 2 cycles are for reset
-    set_rst_n(*g_top, g_ctx->time() >= 3);
+    set_rst_ni(*g_top, g_ctx->time() >= 3);
 
     for (int i = 1; i >= 0; i--) {
-      set_clk(*g_top, i);
+      set_clk_i(*g_top, i);
       g_top->eval();
+      if (log)
       g_vcd->dump(g_ctx->time());
       g_ctx->timeInc(1);
     }
@@ -334,7 +340,7 @@ public:
     if (isValid_cpu_get_pc(*g_top)) {
       if (pc() == 0) {
         // Gracefully stop and do nothing
-        onEvent(Event::Stepped);
+        onEvent(Event::Stepped, std::nullopt);
         return;
       }
       auto prev_line = getLine();
@@ -350,7 +356,7 @@ public:
     }
 
     // send stepped event
-    onEvent(Event::Stepped);
+    onEvent(Event::Stepped, std::nullopt);
 
     // Check board state
     checkBoard();
@@ -359,70 +365,70 @@ public:
   void updateInputs(dap::JoyStick joyStick, dap::Buttons buttons,
                     dap::optional<dap::integer> dipSwitches) {
     if (joyStick.up)
-      set_joystick_up(*g_top, joyStick.up.value(0));
+      set_joystick_up_i(*g_top, joyStick.up.value(0));
     if (joyStick.down)
-      set_joystick_down(*g_top, joyStick.down.value(0));
+      set_joystick_down_i(*g_top, joyStick.down.value(0));
     if (joyStick.left)
-      set_joystick_left(*g_top, joyStick.left.value(0));
+      set_joystick_left_i(*g_top, joyStick.left.value(0));
     if (joyStick.right)
-      set_joystick_right(*g_top, joyStick.right.value(0));
+      set_joystick_right_i(*g_top, joyStick.right.value(0));
     if (joyStick.pressed)
-      set_joystick_pressed(*g_top, joyStick.pressed.value(0));
+      set_joystick_pressed_i(*g_top, joyStick.pressed.value(0));
     if (buttons.top)
-      set_button_top(*g_top, buttons.top.value(0));
+      set_button_top_i(*g_top, buttons.top.value(0));
     if (buttons.bottom)
-      set_button_bottom(*g_top, buttons.bottom.value(0));
+      set_button_bottom_i(*g_top, buttons.bottom.value(0));
     if (buttons.left)
-      set_button_left(*g_top, buttons.left.value(0));
+      set_button_left_i(*g_top, buttons.left.value(0));
     if (buttons.right)
-      set_button_right(*g_top, buttons.right.value(0));
+      set_button_right_i(*g_top, buttons.right.value(0));
     if (buttons.center)
-      set_button_center(*g_top, buttons.center.value(0));
+      set_button_center_i(*g_top, buttons.center.value(0));
     if (dipSwitches)
-      set_dip_switches(*g_top, dipSwitches.value(0));
+      set_dip_switches_i(*g_top, dipSwitches.value(0));
   }
 
   void checkBoard() {
     bool changed = false;
     // Check leds
-    auto led_r = get_led_r(*g_top);
-    auto dap_led_r = convertToDapArray(led_r);
-    if (!ledArray.r || ledArray.r.value() != dap_led_r) {
+    auto led_r_o = get_led_r_o(*g_top);
+    auto dap_led_r_o = convertToDapArray(led_r_o);
+    if (!ledArray.r || ledArray.r.value() != dap_led_r_o) {
       changed = true;
-      ledArray.r = dap_led_r;
+      ledArray.r = dap_led_r_o;
     }
-    auto led_g = get_led_g(*g_top);
-    auto dap_led_g = convertToDapArray(led_g);
-    if (!ledArray.g || ledArray.g.value() != dap_led_g) {
+    auto led_g_o = get_led_g_o(*g_top);
+    auto dap_led_g_o = convertToDapArray(led_g_o);
+    if (!ledArray.g || ledArray.g.value() != dap_led_g_o) {
       changed = true;
-      ledArray.g = dap_led_g;
+      ledArray.g = dap_led_g_o;
     }
-    auto led_b = get_led_b(*g_top);
-    auto dap_led_b = convertToDapArray(led_b);
-    if (!ledArray.b || ledArray.b.value() != dap_led_b) {
+    auto led_b_o = get_led_b_o(*g_top);
+    auto dap_led_b_o = convertToDapArray(led_b_o);
+    if (!ledArray.b || ledArray.b.value() != dap_led_b_o) {
       changed = true;
-      ledArray.b = dap_led_b;
+      ledArray.b = dap_led_b_o;
     }
     // Check seven segment
-    if (sevenSegment.zero.value(0) != get_sevensegment_1(*g_top)) {
+    if (sevenSegment.zero.value(0) != get_sevensegment_1_o(*g_top)) {
       changed = true;
-      sevenSegment.zero = get_sevensegment_1(*g_top);
+      sevenSegment.zero = get_sevensegment_1_o(*g_top);
     }
-    if (sevenSegment.one.value(0) != get_sevensegment_2(*g_top)) {
+    if (sevenSegment.one.value(0) != get_sevensegment_2_o(*g_top)) {
       changed = true;
-      sevenSegment.one = get_sevensegment_2(*g_top);
+      sevenSegment.one = get_sevensegment_2_o(*g_top);
     }
-    if (sevenSegment.two.value(0) != get_sevensegment_3(*g_top)) {
+    if (sevenSegment.two.value(0) != get_sevensegment_3_o(*g_top)) {
       changed = true;
-      sevenSegment.two = get_sevensegment_3(*g_top);
+      sevenSegment.two = get_sevensegment_3_o(*g_top);
     }
-    if (sevenSegment.three.value(0) != get_sevensegment_4(*g_top)) {
+    if (sevenSegment.three.value(0) != get_sevensegment_4_o(*g_top)) {
       changed = true;
-      sevenSegment.three = get_sevensegment_4(*g_top);
+      sevenSegment.three = get_sevensegment_4_o(*g_top);
     }
     // send board update event
     if (changed)
-      onEvent(Event::BoardUpdate);
+      onEvent(Event::BoardUpdate, std::nullopt);
   }
 
   // Convert 120 bit wide array to 12 bit wide DAP array
@@ -467,7 +473,7 @@ public:
       if (isValid_cpu_get_pc(*g_top)) {
         if (pc() == 0) {
           // Gracefully stop
-          onEvent(Event::BreakpointHit);
+          onEvent(Event::BreakpointHit, std::nullopt);
           checkBoard();
           return;
         }
@@ -488,7 +494,7 @@ public:
           continue;
         } else {
           // send breakpoint hit event
-          onEvent(Event::BreakpointHit);
+          onEvent(Event::BreakpointHit, std::nullopt);
           break;
         }
       }
@@ -515,7 +521,7 @@ public:
   void pause() {
     // send paused event
     running = false;
-    onEvent(Event::Paused);
+    onEvent(Event::Paused, std::nullopt);
   }
 
   // returns 0 if PC function exists
@@ -528,6 +534,22 @@ public:
       "zero", "ra", "sp", "gp", "tp",  "t0",  "t1", "t2", "s0", "s1", "a0",
       "a1",   "a2", "a3", "a4", "a5",  "a6",  "a7", "s2", "s3", "s4", "s5",
       "s6",   "s7", "s8", "s9", "s10", "s11", "t3", "t4", "t5", "t6"};
+
+  int32_t getRegIDFromName(const std::string &name) {
+    for (int i = 0; i < sizeof(regNames) / sizeof(regNames[0]); i++) {
+      if (name == regNames[i])
+        return i;
+    }
+    return -1;
+  }
+
+  int32_t getSysRegIDFromName(const std::string &name) {
+    for (int i = 0; i < sizeof(sysRegNames) / sizeof(sysRegNames[0]); i++) {
+      if (name == sysRegNames[i])
+        return sysRegNo[i];
+    }
+    return -1;
+  }
 
   dap::array<dap::Variable> regs() {
     dap::array<dap::Variable> regs;
@@ -571,6 +593,14 @@ public:
 
   void setReg(int unsigned idx, int unsigned val) {
     get_cpu_set_gpr (*g_top)(idx, val);
+    return;
+  }
+
+  /**
+   * Expects the id of sys reg, e.x. 0x300 for mstatus
+   */
+  void setSysReg(int unsigned idx, int unsigned val) {
+    get_cpu_set_csr (*g_top)(idx, val);
     return;
   }
 

@@ -10,26 +10,26 @@
 Vtb::Vtb(VerilatedContext* _vcontextp__, const char* _vcname__)
     : VerilatedModel{*_vcontextp__}
     , vlSymsp{new Vtb__Syms(contextp(), _vcname__, this)}
-    , rst_n{vlSymsp->TOP.rst_n}
-    , button_top{vlSymsp->TOP.button_top}
-    , button_bottom{vlSymsp->TOP.button_bottom}
-    , button_left{vlSymsp->TOP.button_left}
-    , button_right{vlSymsp->TOP.button_right}
-    , button_center{vlSymsp->TOP.button_center}
-    , joystick_up{vlSymsp->TOP.joystick_up}
-    , joystick_down{vlSymsp->TOP.joystick_down}
-    , joystick_left{vlSymsp->TOP.joystick_left}
-    , joystick_right{vlSymsp->TOP.joystick_right}
-    , joystick_pressed{vlSymsp->TOP.joystick_pressed}
-    , sevensegment_1{vlSymsp->TOP.sevensegment_1}
-    , sevensegment_2{vlSymsp->TOP.sevensegment_2}
-    , sevensegment_3{vlSymsp->TOP.sevensegment_3}
-    , sevensegment_4{vlSymsp->TOP.sevensegment_4}
-    , dip_switches{vlSymsp->TOP.dip_switches}
-    , led_r{vlSymsp->TOP.led_r}
-    , led_g{vlSymsp->TOP.led_g}
-    , led_b{vlSymsp->TOP.led_b}
-    , clk{vlSymsp->TOP.clk}
+    , rst_ni{vlSymsp->TOP.rst_ni}
+    , button_top_i{vlSymsp->TOP.button_top_i}
+    , button_bottom_i{vlSymsp->TOP.button_bottom_i}
+    , button_left_i{vlSymsp->TOP.button_left_i}
+    , button_right_i{vlSymsp->TOP.button_right_i}
+    , button_center_i{vlSymsp->TOP.button_center_i}
+    , joystick_up_i{vlSymsp->TOP.joystick_up_i}
+    , joystick_down_i{vlSymsp->TOP.joystick_down_i}
+    , joystick_left_i{vlSymsp->TOP.joystick_left_i}
+    , joystick_right_i{vlSymsp->TOP.joystick_right_i}
+    , joystick_pressed_i{vlSymsp->TOP.joystick_pressed_i}
+    , sevensegment_1_o{vlSymsp->TOP.sevensegment_1_o}
+    , sevensegment_2_o{vlSymsp->TOP.sevensegment_2_o}
+    , sevensegment_3_o{vlSymsp->TOP.sevensegment_3_o}
+    , sevensegment_4_o{vlSymsp->TOP.sevensegment_4_o}
+    , dip_switches_i{vlSymsp->TOP.dip_switches_i}
+    , led_r_o{vlSymsp->TOP.led_r_o}
+    , led_g_o{vlSymsp->TOP.led_g_o}
+    , led_b_o{vlSymsp->TOP.led_b_o}
+    , clk_i{vlSymsp->TOP.clk_i}
     , rootp{&(vlSymsp->TOP)}
 {
     // Register model with the context
@@ -88,7 +88,7 @@ void Vtb::eval_step() {
 bool Vtb::eventsPending() { return false; }
 
 uint64_t Vtb::nextTimeSlot() {
-    VL_FATAL_MT(__FILE__, __LINE__, "", "%Error: No delays in the design");
+    VL_FATAL_MT(__FILE__, __LINE__, "", "No delays in the design");
     return 0;
 }
 
@@ -138,10 +138,10 @@ VL_ATTR_COLD static void trace_init(void* voidSelf, VerilatedVcd* tracep, uint32
             "Turning on wave traces requires Verilated::traceEverOn(true) call before time 0.");
     }
     vlSymsp->__Vm_baseCode = code;
-    if (strlen(vlSymsp->name())) tracep->pushPrefix(std::string{vlSymsp->name()}, VerilatedTracePrefixType::SCOPE_MODULE);
+    tracep->pushPrefix(std::string{vlSymsp->name()}, VerilatedTracePrefixType::SCOPE_MODULE);
     Vtb___024root__trace_decl_types(tracep);
     Vtb___024root__trace_init_top(vlSelf, tracep);
-    if (strlen(vlSymsp->name())) tracep->popPrefix();
+    tracep->popPrefix();
 }
 
 VL_ATTR_COLD void Vtb___024root__trace_register(Vtb___024root* vlSelf, VerilatedVcd* tracep);

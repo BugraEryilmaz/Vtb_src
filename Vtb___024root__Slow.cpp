@@ -19,10 +19,10 @@ Vtb___024root::Vtb___024root(Vtb__Syms* symsp, const char* v__name)
     , __Vm_mtaskstate_16(1U)
     , __Vm_mtaskstate_11(3U)
     , __Vm_mtaskstate_20(1U)
-    , __Vm_mtaskstate_23(1U)
+    , __Vm_mtaskstate_17(1U)
     , __Vm_mtaskstate_12(3U)
     , __Vm_mtaskstate_21(1U)
-    , __Vm_mtaskstate_17(1U)
+    , __Vm_mtaskstate_18(1U)
     , __Vm_mtaskstate_final__nba(4U)
     , vlSymsp{symsp}
  {

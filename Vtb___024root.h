@@ -18,7 +18,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb___024root final : public VerilatedModule 
     // DESIGN SPECIFIC STATE
     // Anonymous structures to workaround compiler member-count bugs
     struct {
-        VlUnpacked<CData/*0:0*/, 30> __Vm_traceActivity;
+        VlUnpacked<CData/*0:0*/, 29> __Vm_traceActivity;
         IData/*31:0*/ tb__DOT__bus_wdata;
         SData/*11:0*/ tb__DOT__u_led__DOT__val;
         CData/*0:0*/ tb__DOT__u_led__DOT__genblk3__BRA__3__KET____DOT__genblk1__BRA__8__KET____DOT__nxt;
@@ -93,20 +93,20 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb___024root final : public VerilatedModule 
         CData/*0:0*/ tb__DOT__u_led__DOT__genblk3__BRA__9__KET____DOT__genblk1__BRA__8__KET____DOT__sel;
         CData/*0:0*/ tb__DOT__u_led__DOT__genblk3__BRA__9__KET____DOT__genblk1__BRA__10__KET____DOT__sel;
         CData/*0:0*/ tb__DOT__u_led__DOT__genblk3__BRA__9__KET____DOT__genblk1__BRA__11__KET____DOT__sel;
-        VL_IN8(rst_n,0,0);
+        VL_IN8(rst_ni,0,0);
         SData/*9:0*/ tb__DOT__u_but__DOT__ext_push;
         IData/*31:0*/ tb__DOT__u_rng__DOT__lfsr_q;
         IData/*19:0*/ tb__DOT__u_but__DOT__ptm_q;
-        VL_IN8(button_top,0,0);
-        VL_IN8(button_bottom,0,0);
-        VL_IN8(button_left,0,0);
-        VL_IN8(button_right,0,0);
-        VL_IN8(button_center,0,0);
-        VL_IN8(joystick_up,0,0);
-        VL_IN8(joystick_down,0,0);
-        VL_IN8(joystick_left,0,0);
-        VL_IN8(joystick_right,0,0);
-        VL_IN8(joystick_pressed,0,0);
+        VL_IN8(button_top_i,0,0);
+        VL_IN8(button_bottom_i,0,0);
+        VL_IN8(button_left_i,0,0);
+        VL_IN8(button_right_i,0,0);
+        VL_IN8(button_center_i,0,0);
+        VL_IN8(joystick_up_i,0,0);
+        VL_IN8(joystick_down_i,0,0);
+        VL_IN8(joystick_left_i,0,0);
+        VL_IN8(joystick_right_i,0,0);
+        VL_IN8(joystick_pressed_i,0,0);
         CData/*0:0*/ tb__DOT__u_but__DOT__u_ptm__DOT__genblk1__BRA__0__KET____DOT__src_edge;
         CData/*0:0*/ tb__DOT__u_but__DOT__u_ptm__DOT__genblk1__BRA__0__KET____DOT__vld_q;
         CData/*0:0*/ tb__DOT__u_but__DOT__u_ptm__DOT__genblk1__BRA__0__KET____DOT__val_q;
@@ -163,10 +163,10 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb___024root final : public VerilatedModule 
         CData/*0:0*/ tb__DOT__u_rng__DOT__err_q;
         CData/*0:0*/ tb__DOT__u_led__DOT__err_q;
         CData/*0:0*/ tb__DOT__u_lcd__DOT__err_q;
-        VL_OUT8(sevensegment_1,7,0);
-        VL_OUT8(sevensegment_2,7,0);
-        VL_OUT8(sevensegment_3,7,0);
-        VL_OUT8(sevensegment_4,7,0);
+        VL_OUT8(sevensegment_1_o,7,0);
+        VL_OUT8(sevensegment_2_o,7,0);
+        VL_OUT8(sevensegment_3_o,7,0);
+        VL_OUT8(sevensegment_4_o,7,0);
         IData/*31:0*/ tb__DOT__u_cpu__DOT__bus_data_q;
         IData/*31:0*/ tb__DOT__u_mem__DOT__rdata_q;
         VlUnpacked<CData/*7:0*/, 4> tb__DOT__u_lcd__DOT__disp_q;
@@ -275,7 +275,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb___024root final : public VerilatedModule 
         CData/*0:0*/ tb__DOT__u_cpu__DOT__wi_csr_we_mcause;
         IData/*31:0*/ tb__DOT__u_cpu__DOT__wb_gpr_wdata;
         IData/*31:0*/ tb__DOT__u_cpu__DOT__wb_csr_wdata;
-        VL_IN8(dip_switches,7,0);
+        VL_IN8(dip_switches_i,7,0);
         CData/*0:0*/ tb__DOT__u_cpu__DOT__csr_mtie_q;
         CData/*0:0*/ tb__DOT__u_cpu__DOT__csr_mpie_q;
         CData/*0:0*/ tb__DOT__u_cpu__DOT__csr_mcause_i_q;
@@ -483,9 +483,9 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb___024root final : public VerilatedModule 
         CData/*0:0*/ tb__DOT__u_led__DOT__genblk3__BRA__7__KET____DOT__genblk1__BRA__1__KET____DOT__nxt;
         CData/*0:0*/ tb__DOT__u_led__DOT__genblk3__BRA__7__KET____DOT__genblk1__BRA__2__KET____DOT__nxt;
         CData/*0:0*/ tb__DOT__u_led__DOT__b_en;
-        VL_OUTW(led_r,119,0,4);
-        VL_OUTW(led_g,119,0,4);
-        VL_OUTW(led_b,119,0,4);
+        VL_OUTW(led_r_o,119,0,4);
+        VL_OUTW(led_g_o,119,0,4);
+        VL_OUTW(led_b_o,119,0,4);
         VlWide<4>/*119:0*/ tb__DOT__u_led__DOT__led_g_q;
         CData/*0:0*/ tb__DOT__u_led__DOT__g_en;
         CData/*0:0*/ tb__DOT__u_led__DOT__wen;
@@ -512,19 +512,19 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb___024root final : public VerilatedModule 
         CData/*0:0*/ tb__DOT__u_led__DOT____VdfgRegularize_h7b819956_0_5;
         CData/*0:0*/ tb__DOT__u_led__DOT____VdfgRegularize_h7b819956_0_16;
         CData/*0:0*/ tb__DOT__u_led__DOT____VdfgRegularize_h7b819956_0_17;
-        VL_IN8(clk,0,0);
+        VL_IN8(clk_i,0,0);
         CData/*0:0*/ __Vdpi_export_trigger;
         CData/*0:0*/ __VnbaEventTrigger;
         CData/*0:0*/ __VstlFirstIteration;
         CData/*0:0*/ __VicoFirstIteration;
-        CData/*0:0*/ __Vtrigprevexpr___TOP__clk__0;
-        CData/*0:0*/ __Vtrigprevexpr___TOP__rst_n__0;
+        CData/*0:0*/ __Vtrigprevexpr___TOP__clk_i__0;
+        CData/*0:0*/ __Vtrigprevexpr___TOP__rst_ni__0;
         CData/*0:0*/ __VactDidInit;
         CData/*0:0*/ __VactContinue;
         IData/*31:0*/ __VactIterCount;
     };
     VlEvent __VnbaEvent;
-    VlTriggerScheduler __VtrigSched_hd48f617d__0;
+    VlTriggerScheduler __VtrigSched_h5d83e31d__0;
     VlTriggerVec<1> __VstlTriggered;
     VlTriggerVec<2> __VicoTriggered;
     VlTriggerVec<4> __VactTriggered;
@@ -538,10 +538,10 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb___024root final : public VerilatedModule 
     VlMTaskVertex __Vm_mtaskstate_16;
     VlMTaskVertex __Vm_mtaskstate_11;
     VlMTaskVertex __Vm_mtaskstate_20;
-    VlMTaskVertex __Vm_mtaskstate_23;
+    VlMTaskVertex __Vm_mtaskstate_17;
     VlMTaskVertex __Vm_mtaskstate_12;
     VlMTaskVertex __Vm_mtaskstate_21;
-    VlMTaskVertex __Vm_mtaskstate_17;
+    VlMTaskVertex __Vm_mtaskstate_18;
     VlMTaskVertex __Vm_mtaskstate_final__nba;
 
     // INTERNAL VARIABLES

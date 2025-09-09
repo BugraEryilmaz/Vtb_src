@@ -14,7 +14,7 @@ VL_ATTR_COLD void Vtb___024root___eval_triggers__stl(Vtb___024root* vlSelf) {
     (void)vlSelf;  // Prevent unused variable warning
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root___eval_triggers__stl\n"); );
-    auto &vlSelfRef = std::ref(*vlSelf).get();
+    auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
     vlSelfRef.__VstlTriggered.set(0U, (IData)(vlSelfRef.__VstlFirstIteration));
 #ifdef VL_DEBUG

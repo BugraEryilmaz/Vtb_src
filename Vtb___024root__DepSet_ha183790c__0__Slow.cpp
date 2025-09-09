@@ -9,24 +9,24 @@ VL_ATTR_COLD void Vtb___024root___eval_static(Vtb___024root* vlSelf) {
     (void)vlSelf;  // Prevent unused variable warning
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root___eval_static\n"); );
-    auto &vlSelfRef = std::ref(*vlSelf).get();
+    auto& vlSelfRef = std::ref(*vlSelf).get();
 }
 
 VL_ATTR_COLD void Vtb___024root___eval_initial(Vtb___024root* vlSelf) {
     (void)vlSelf;  // Prevent unused variable warning
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root___eval_initial\n"); );
-    auto &vlSelfRef = std::ref(*vlSelf).get();
+    auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    vlSelfRef.__Vtrigprevexpr___TOP__clk__0 = vlSelfRef.clk;
-    vlSelfRef.__Vtrigprevexpr___TOP__rst_n__0 = vlSelfRef.rst_n;
+    vlSelfRef.__Vtrigprevexpr___TOP__clk_i__0 = vlSelfRef.clk_i;
+    vlSelfRef.__Vtrigprevexpr___TOP__rst_ni__0 = vlSelfRef.rst_ni;
 }
 
 VL_ATTR_COLD void Vtb___024root___eval_final(Vtb___024root* vlSelf) {
     (void)vlSelf;  // Prevent unused variable warning
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root___eval_final\n"); );
-    auto &vlSelfRef = std::ref(*vlSelf).get();
+    auto& vlSelfRef = std::ref(*vlSelf).get();
 }
 
 #ifdef VL_DEBUG
@@ -38,7 +38,7 @@ VL_ATTR_COLD void Vtb___024root___eval_settle(Vtb___024root* vlSelf) {
     (void)vlSelf;  // Prevent unused variable warning
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root___eval_settle\n"); );
-    auto &vlSelfRef = std::ref(*vlSelf).get();
+    auto& vlSelfRef = std::ref(*vlSelf).get();
     // Init
     IData/*31:0*/ __VstlIterCount;
     CData/*0:0*/ __VstlContinue;
@@ -51,7 +51,7 @@ VL_ATTR_COLD void Vtb___024root___eval_settle(Vtb___024root* vlSelf) {
 #ifdef VL_DEBUG
             Vtb___024root___dump_triggers__stl(vlSelf);
 #endif
-            VL_FATAL_MT("/home/bugra/TA/CS200/cs-200/src/DebugAdapter/../cpu/tb.sv", 1, "", "Settle region did not converge.");
+            VL_FATAL_MT("/home/bugra/PhD/TA/cs-200/infrastructure/debugger/../processor/tb.sv", 1, "", "Settle region did not converge.");
         }
         __VstlIterCount = ((IData)(1U) + __VstlIterCount);
         __VstlContinue = 0U;
@@ -67,7 +67,7 @@ VL_ATTR_COLD void Vtb___024root___dump_triggers__stl(Vtb___024root* vlSelf) {
     (void)vlSelf;  // Prevent unused variable warning
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root___dump_triggers__stl\n"); );
-    auto &vlSelfRef = std::ref(*vlSelf).get();
+    auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
     if ((1U & (~ vlSelfRef.__VstlTriggered.any()))) {
         VL_DBG_MSGF("         No triggers active\n");
@@ -79,45 +79,17 @@ VL_ATTR_COLD void Vtb___024root___dump_triggers__stl(Vtb___024root* vlSelf) {
 #endif  // VL_DEBUG
 
 VL_ATTR_COLD void Vtb___024root___stl_sequent__TOP__0(Vtb___024root* vlSelf);
+VL_ATTR_COLD void Vtb___024root____Vm_traceActivitySetAll(Vtb___024root* vlSelf);
 
 VL_ATTR_COLD void Vtb___024root___eval_stl(Vtb___024root* vlSelf) {
     (void)vlSelf;  // Prevent unused variable warning
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root___eval_stl\n"); );
-    auto &vlSelfRef = std::ref(*vlSelf).get();
+    auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
     if ((1ULL & vlSelfRef.__VstlTriggered.word(0U))) {
         Vtb___024root___stl_sequent__TOP__0(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0x1dU] = 1U;
-        vlSelfRef.__Vm_traceActivity[0x1cU] = 1U;
-        vlSelfRef.__Vm_traceActivity[0x1bU] = 1U;
-        vlSelfRef.__Vm_traceActivity[0x1aU] = 1U;
-        vlSelfRef.__Vm_traceActivity[0x19U] = 1U;
-        vlSelfRef.__Vm_traceActivity[0x18U] = 1U;
-        vlSelfRef.__Vm_traceActivity[0x17U] = 1U;
-        vlSelfRef.__Vm_traceActivity[0x16U] = 1U;
-        vlSelfRef.__Vm_traceActivity[0x15U] = 1U;
-        vlSelfRef.__Vm_traceActivity[0x14U] = 1U;
-        vlSelfRef.__Vm_traceActivity[0x13U] = 1U;
-        vlSelfRef.__Vm_traceActivity[0x12U] = 1U;
-        vlSelfRef.__Vm_traceActivity[0x11U] = 1U;
-        vlSelfRef.__Vm_traceActivity[0x10U] = 1U;
-        vlSelfRef.__Vm_traceActivity[0xfU] = 1U;
-        vlSelfRef.__Vm_traceActivity[0xeU] = 1U;
-        vlSelfRef.__Vm_traceActivity[0xdU] = 1U;
-        vlSelfRef.__Vm_traceActivity[0xcU] = 1U;
-        vlSelfRef.__Vm_traceActivity[0xbU] = 1U;
-        vlSelfRef.__Vm_traceActivity[0xaU] = 1U;
-        vlSelfRef.__Vm_traceActivity[9U] = 1U;
-        vlSelfRef.__Vm_traceActivity[8U] = 1U;
-        vlSelfRef.__Vm_traceActivity[7U] = 1U;
-        vlSelfRef.__Vm_traceActivity[6U] = 1U;
-        vlSelfRef.__Vm_traceActivity[5U] = 1U;
-        vlSelfRef.__Vm_traceActivity[4U] = 1U;
-        vlSelfRef.__Vm_traceActivity[3U] = 1U;
-        vlSelfRef.__Vm_traceActivity[2U] = 1U;
-        vlSelfRef.__Vm_traceActivity[1U] = 1U;
-        vlSelfRef.__Vm_traceActivity[0U] = 1U;
+        Vtb___024root____Vm_traceActivitySetAll(vlSelf);
     }
 }
 
@@ -125,27 +97,27 @@ VL_ATTR_COLD void Vtb___024root___stl_sequent__TOP__0(Vtb___024root* vlSelf) {
     (void)vlSelf;  // Prevent unused variable warning
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root___stl_sequent__TOP__0\n"); );
-    auto &vlSelfRef = std::ref(*vlSelf).get();
+    auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    vlSelfRef.led_r[0U] = vlSelfRef.tb__DOT__u_led__DOT__led_r_q[0U];
-    vlSelfRef.led_r[1U] = vlSelfRef.tb__DOT__u_led__DOT__led_r_q[1U];
-    vlSelfRef.led_r[2U] = vlSelfRef.tb__DOT__u_led__DOT__led_r_q[2U];
-    vlSelfRef.led_r[3U] = vlSelfRef.tb__DOT__u_led__DOT__led_r_q[3U];
-    vlSelfRef.led_g[0U] = vlSelfRef.tb__DOT__u_led__DOT__led_g_q[0U];
-    vlSelfRef.led_g[1U] = vlSelfRef.tb__DOT__u_led__DOT__led_g_q[1U];
-    vlSelfRef.led_g[2U] = vlSelfRef.tb__DOT__u_led__DOT__led_g_q[2U];
-    vlSelfRef.led_g[3U] = vlSelfRef.tb__DOT__u_led__DOT__led_g_q[3U];
-    vlSelfRef.led_b[0U] = vlSelfRef.tb__DOT__u_led__DOT__led_b_q[0U];
-    vlSelfRef.led_b[1U] = vlSelfRef.tb__DOT__u_led__DOT__led_b_q[1U];
-    vlSelfRef.led_b[2U] = vlSelfRef.tb__DOT__u_led__DOT__led_b_q[2U];
-    vlSelfRef.led_b[3U] = vlSelfRef.tb__DOT__u_led__DOT__led_b_q[3U];
-    vlSelfRef.sevensegment_1 = vlSelfRef.tb__DOT__u_lcd__DOT__disp_q
+    vlSelfRef.led_r_o[0U] = vlSelfRef.tb__DOT__u_led__DOT__led_r_q[0U];
+    vlSelfRef.led_r_o[1U] = vlSelfRef.tb__DOT__u_led__DOT__led_r_q[1U];
+    vlSelfRef.led_r_o[2U] = vlSelfRef.tb__DOT__u_led__DOT__led_r_q[2U];
+    vlSelfRef.led_r_o[3U] = vlSelfRef.tb__DOT__u_led__DOT__led_r_q[3U];
+    vlSelfRef.led_g_o[0U] = vlSelfRef.tb__DOT__u_led__DOT__led_g_q[0U];
+    vlSelfRef.led_g_o[1U] = vlSelfRef.tb__DOT__u_led__DOT__led_g_q[1U];
+    vlSelfRef.led_g_o[2U] = vlSelfRef.tb__DOT__u_led__DOT__led_g_q[2U];
+    vlSelfRef.led_g_o[3U] = vlSelfRef.tb__DOT__u_led__DOT__led_g_q[3U];
+    vlSelfRef.led_b_o[0U] = vlSelfRef.tb__DOT__u_led__DOT__led_b_q[0U];
+    vlSelfRef.led_b_o[1U] = vlSelfRef.tb__DOT__u_led__DOT__led_b_q[1U];
+    vlSelfRef.led_b_o[2U] = vlSelfRef.tb__DOT__u_led__DOT__led_b_q[2U];
+    vlSelfRef.led_b_o[3U] = vlSelfRef.tb__DOT__u_led__DOT__led_b_q[3U];
+    vlSelfRef.sevensegment_1_o = vlSelfRef.tb__DOT__u_lcd__DOT__disp_q
         [0U];
-    vlSelfRef.sevensegment_2 = vlSelfRef.tb__DOT__u_lcd__DOT__disp_q
+    vlSelfRef.sevensegment_2_o = vlSelfRef.tb__DOT__u_lcd__DOT__disp_q
         [1U];
-    vlSelfRef.sevensegment_3 = vlSelfRef.tb__DOT__u_lcd__DOT__disp_q
+    vlSelfRef.sevensegment_3_o = vlSelfRef.tb__DOT__u_lcd__DOT__disp_q
         [2U];
-    vlSelfRef.sevensegment_4 = vlSelfRef.tb__DOT__u_lcd__DOT__disp_q
+    vlSelfRef.sevensegment_4_o = vlSelfRef.tb__DOT__u_lcd__DOT__disp_q
         [3U];
     vlSelfRef.tb__DOT__u_rng__DOT__lfsr_xor = ((0x40U 
                                                 & (vlSelfRef.tb__DOT__u_rng__DOT__lfsr_q 
@@ -176,27 +148,27 @@ VL_ATTR_COLD void Vtb___024root___stl_sequent__TOP__0(Vtb___024root* vlSelf) {
                                                    & vlSelfRef.tb__DOT__u_but__DOT__ext_val_q);
     } else {
         vlSelfRef.tb__DOT__u_but__DOT__ext_switch = 
-            (0xffU & (IData)(vlSelfRef.dip_switches));
+            (0xffU & (IData)(vlSelfRef.dip_switches_i));
         vlSelfRef.tb__DOT__u_but__DOT__ext_push = (0x3ffU 
-                                                   & (((IData)(vlSelfRef.button_top) 
-                                                       << 9U) 
-                                                      | (((IData)(vlSelfRef.button_bottom) 
-                                                          << 8U) 
-                                                         | (((IData)(vlSelfRef.button_left) 
-                                                             << 7U) 
-                                                            | (((IData)(vlSelfRef.button_right) 
-                                                                << 6U) 
-                                                               | (((IData)(vlSelfRef.button_center) 
-                                                                   << 5U) 
-                                                                  | (((IData)(vlSelfRef.joystick_up) 
-                                                                      << 4U) 
-                                                                     | (((IData)(vlSelfRef.joystick_down) 
-                                                                         << 3U) 
-                                                                        | (((IData)(vlSelfRef.joystick_left) 
-                                                                            << 2U) 
-                                                                           | (((IData)(vlSelfRef.joystick_right) 
-                                                                               << 1U) 
-                                                                              | (IData)(vlSelfRef.joystick_pressed)))))))))));
+                                                   & (((((IData)(vlSelfRef.button_top_i) 
+                                                         << 9U) 
+                                                        | (((IData)(vlSelfRef.button_bottom_i) 
+                                                            << 8U) 
+                                                           | ((IData)(vlSelfRef.button_left_i) 
+                                                              << 7U))) 
+                                                       | (((IData)(vlSelfRef.button_right_i) 
+                                                           << 6U) 
+                                                          | ((IData)(vlSelfRef.button_center_i) 
+                                                             << 5U))) 
+                                                      | ((((IData)(vlSelfRef.joystick_up_i) 
+                                                           << 4U) 
+                                                          | (((IData)(vlSelfRef.joystick_down_i) 
+                                                              << 3U) 
+                                                             | ((IData)(vlSelfRef.joystick_left_i) 
+                                                                << 2U))) 
+                                                         | (((IData)(vlSelfRef.joystick_right_i) 
+                                                             << 1U) 
+                                                            | (IData)(vlSelfRef.joystick_pressed_i)))));
     }
     vlSelfRef.tb__DOT__u_but__DOT__u_stm__DOT__genblk1__BRA__0__KET____DOT__src_edge 
         = ((~ (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_stm__DOT__genblk1__BRA__0__KET____DOT__vld_q)) 
@@ -270,112 +242,93 @@ VL_ATTR_COLD void Vtb___024root___stl_sequent__TOP__0(Vtb___024root* vlSelf) {
                          & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
                             >> 7U)))));
     vlSelfRef.tb__DOT__u_but__DOT____Vcellout__u_stm__src 
-        = ((((IData)(((~ ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
-                          >> 7U)) & (0U == (0xc000U 
-                                            & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))))) 
-             | ((IData)(((0x4000U == (0xc000U & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))) 
-                         & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
-                            >> 7U))) | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_stm__DOT__genblk1__BRA__7__KET____DOT__vld_q))) 
-            << 7U) | ((((IData)(((~ ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
-                                     >> 6U)) & (0U 
-                                                == 
-                                                (0x3000U 
-                                                 & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))))) 
-                        | ((IData)(((0x1000U == (0x3000U 
-                                                 & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))) 
-                                    & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
-                                       >> 6U))) | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_stm__DOT__genblk1__BRA__6__KET____DOT__vld_q))) 
-                       << 6U) | ((((IData)(((~ ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
-                                                >> 5U)) 
-                                            & (0U == 
-                                               (0xc00U 
-                                                & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))))) 
-                                   | ((IData)(((0x400U 
-                                                == 
-                                                (0xc00U 
-                                                 & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))) 
-                                               & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
-                                                  >> 5U))) 
-                                      | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_stm__DOT__genblk1__BRA__5__KET____DOT__vld_q))) 
-                                  << 5U) | ((((IData)(
-                                                      ((~ 
-                                                        ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
-                                                         >> 4U)) 
-                                                       & (0U 
-                                                          == 
-                                                          (0x300U 
-                                                           & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))))) 
-                                              | ((IData)(
-                                                         ((0x100U 
+        = ((((((IData)(((~ ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
+                            >> 7U)) & (0U == (0xc000U 
+                                              & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))))) 
+               | ((IData)(((0x4000U == (0xc000U & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))) 
+                           & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
+                              >> 7U))) | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_stm__DOT__genblk1__BRA__7__KET____DOT__vld_q))) 
+              << 7U) | (((IData)(((~ ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
+                                      >> 6U)) & (0U 
+                                                 == 
+                                                 (0x3000U 
+                                                  & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))))) 
+                         | ((IData)(((0x1000U == (0x3000U 
+                                                  & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))) 
+                                     & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
+                                        >> 6U))) | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_stm__DOT__genblk1__BRA__6__KET____DOT__vld_q))) 
+                        << 6U)) | ((((IData)(((~ ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
+                                                  >> 5U)) 
+                                              & (0U 
+                                                 == 
+                                                 (0xc00U 
+                                                  & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))))) 
+                                     | ((IData)(((0x400U 
+                                                  == 
+                                                  (0xc00U 
+                                                   & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))) 
+                                                 & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
+                                                    >> 5U))) 
+                                        | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_stm__DOT__genblk1__BRA__5__KET____DOT__vld_q))) 
+                                    << 5U) | (((IData)(
+                                                       ((~ 
+                                                         ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
+                                                          >> 4U)) 
+                                                        & (0U 
                                                            == 
                                                            (0x300U 
-                                                            & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))) 
-                                                          & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
-                                                             >> 4U))) 
-                                                 | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_stm__DOT__genblk1__BRA__4__KET____DOT__vld_q))) 
-                                             << 4U) 
-                                            | ((((IData)(
-                                                         ((~ 
-                                                           ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
-                                                            >> 3U)) 
-                                                          & (0U 
-                                                             == 
-                                                             (0xc0U 
-                                                              & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))))) 
-                                                 | ((IData)(
-                                                            ((0x40U 
-                                                              == 
-                                                              (0xc0U 
-                                                               & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))) 
-                                                             & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
-                                                                >> 3U))) 
-                                                    | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_stm__DOT__genblk1__BRA__3__KET____DOT__vld_q))) 
-                                                << 3U) 
-                                               | ((((IData)(
-                                                            ((~ 
-                                                              ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
-                                                               >> 2U)) 
-                                                             & (0U 
-                                                                == 
-                                                                (0x30U 
-                                                                 & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))))) 
-                                                    | ((IData)(
-                                                               ((0x10U 
-                                                                 == 
-                                                                 (0x30U 
-                                                                  & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))) 
-                                                                & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
-                                                                   >> 2U))) 
-                                                       | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_stm__DOT__genblk1__BRA__2__KET____DOT__vld_q))) 
-                                                   << 2U) 
-                                                  | ((((IData)(
-                                                               ((~ 
-                                                                 ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
-                                                                  >> 1U)) 
-                                                                & (0U 
-                                                                   == 
-                                                                   (0xcU 
-                                                                    & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))))) 
-                                                       | ((IData)(
-                                                                  ((4U 
-                                                                    == 
-                                                                    (0xcU 
-                                                                     & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))) 
-                                                                   & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
-                                                                      >> 1U))) 
-                                                          | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_stm__DOT__genblk1__BRA__1__KET____DOT__vld_q))) 
-                                                      << 1U) 
-                                                     | (((~ (IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch)) 
-                                                         & (0U 
+                                                            & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))))) 
+                                               | ((IData)(
+                                                          ((0x100U 
                                                             == 
-                                                            (3U 
-                                                             & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q)))) 
-                                                        | (((1U 
-                                                             == 
-                                                             (3U 
-                                                              & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))) 
-                                                            & (IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch)) 
-                                                           | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_stm__DOT__genblk1__BRA__0__KET____DOT__vld_q))))))))));
+                                                            (0x300U 
+                                                             & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))) 
+                                                           & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
+                                                              >> 4U))) 
+                                                  | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_stm__DOT__genblk1__BRA__4__KET____DOT__vld_q))) 
+                                              << 4U))) 
+           | (((((IData)(((~ ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
+                              >> 3U)) & (0U == (0xc0U 
+                                                & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))))) 
+                 | ((IData)(((0x40U == (0xc0U & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))) 
+                             & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
+                                >> 3U))) | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_stm__DOT__genblk1__BRA__3__KET____DOT__vld_q))) 
+                << 3U) | (((IData)(((~ ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
+                                        >> 2U)) & (0U 
+                                                   == 
+                                                   (0x30U 
+                                                    & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))))) 
+                           | ((IData)(((0x10U == (0x30U 
+                                                  & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))) 
+                                       & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
+                                          >> 2U))) 
+                              | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_stm__DOT__genblk1__BRA__2__KET____DOT__vld_q))) 
+                          << 2U)) | ((((IData)(((~ 
+                                                 ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
+                                                  >> 1U)) 
+                                                & (0U 
+                                                   == 
+                                                   (0xcU 
+                                                    & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))))) 
+                                       | ((IData)((
+                                                   (4U 
+                                                    == 
+                                                    (0xcU 
+                                                     & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))) 
+                                                   & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch) 
+                                                      >> 1U))) 
+                                          | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_stm__DOT__genblk1__BRA__1__KET____DOT__vld_q))) 
+                                      << 1U) | (((~ (IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch)) 
+                                                 & (0U 
+                                                    == 
+                                                    (3U 
+                                                     & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q)))) 
+                                                | (((1U 
+                                                     == 
+                                                     (3U 
+                                                      & (IData)(vlSelfRef.tb__DOT__u_but__DOT__stm_q))) 
+                                                    & (IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_switch)) 
+                                                   | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_stm__DOT__genblk1__BRA__0__KET____DOT__vld_q))))));
     vlSelfRef.tb__DOT__u_but__DOT__u_ptm__DOT__genblk1__BRA__0__KET____DOT__src_edge 
         = ((~ (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_ptm__DOT__genblk1__BRA__0__KET____DOT__vld_q)) 
            & (((2U == (3U & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)) 
@@ -466,146 +419,124 @@ VL_ATTR_COLD void Vtb___024root___stl_sequent__TOP__0(Vtb___024root* vlSelf) {
                          & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
                             >> 9U)))));
     vlSelfRef.tb__DOT__u_but__DOT____Vcellout__u_ptm__src 
-        = ((((IData)(((~ ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
-                          >> 9U)) & (0U == (0xc0000U 
-                                            & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)))) 
-             | ((IData)(((0x40000U == (0xc0000U & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)) 
-                         & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
-                            >> 9U))) | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_ptm__DOT__genblk1__BRA__9__KET____DOT__vld_q))) 
-            << 9U) | ((((IData)(((~ ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
-                                     >> 8U)) & (0U 
-                                                == 
-                                                (0x30000U 
-                                                 & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)))) 
-                        | ((IData)(((0x10000U == (0x30000U 
-                                                  & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)) 
-                                    & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
-                                       >> 8U))) | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_ptm__DOT__genblk1__BRA__8__KET____DOT__vld_q))) 
-                       << 8U) | ((((IData)(((~ ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
-                                                >> 7U)) 
-                                            & (0U == 
-                                               (0xc000U 
-                                                & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)))) 
-                                   | ((IData)(((0x4000U 
+        = ((((((IData)(((~ ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
+                            >> 9U)) & (0U == (0xc0000U 
+                                              & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)))) 
+               | ((IData)(((0x40000U == (0xc0000U & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)) 
+                           & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
+                              >> 9U))) | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_ptm__DOT__genblk1__BRA__9__KET____DOT__vld_q))) 
+              << 9U) | ((((IData)(((~ ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
+                                       >> 8U)) & (0U 
+                                                  == 
+                                                  (0x30000U 
+                                                   & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)))) 
+                          | ((IData)(((0x10000U == 
+                                       (0x30000U & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)) 
+                                      & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
+                                         >> 8U))) | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_ptm__DOT__genblk1__BRA__8__KET____DOT__vld_q))) 
+                         << 8U) | (((IData)(((~ ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
+                                                 >> 7U)) 
+                                             & (0U 
                                                 == 
                                                 (0xc000U 
-                                                 & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)) 
-                                               & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
-                                                  >> 7U))) 
-                                      | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_ptm__DOT__genblk1__BRA__7__KET____DOT__vld_q))) 
-                                  << 7U) | ((((IData)(
-                                                      ((~ 
-                                                        ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
-                                                         >> 6U)) 
-                                                       & (0U 
-                                                          == 
-                                                          (0x3000U 
-                                                           & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)))) 
-                                              | ((IData)(
-                                                         ((0x1000U 
-                                                           == 
-                                                           (0x3000U 
-                                                            & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)) 
-                                                          & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
-                                                             >> 6U))) 
-                                                 | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_ptm__DOT__genblk1__BRA__6__KET____DOT__vld_q))) 
-                                             << 6U) 
-                                            | ((((IData)(
+                                                 & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)))) 
+                                    | ((IData)(((0x4000U 
+                                                 == 
+                                                 (0xc000U 
+                                                  & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)) 
+                                                & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
+                                                   >> 7U))) 
+                                       | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_ptm__DOT__genblk1__BRA__7__KET____DOT__vld_q))) 
+                                   << 7U))) | ((((IData)(
                                                          ((~ 
                                                            ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
-                                                            >> 5U)) 
+                                                            >> 6U)) 
                                                           & (0U 
                                                              == 
-                                                             (0xc00U 
+                                                             (0x3000U 
                                                               & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)))) 
                                                  | ((IData)(
-                                                            ((0x400U 
+                                                            ((0x1000U 
                                                               == 
-                                                              (0xc00U 
+                                                              (0x3000U 
                                                                & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)) 
                                                              & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
-                                                                >> 5U))) 
-                                                    | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_ptm__DOT__genblk1__BRA__5__KET____DOT__vld_q))) 
-                                                << 5U) 
-                                               | ((((IData)(
-                                                            ((~ 
-                                                              ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
-                                                               >> 4U)) 
-                                                             & (0U 
+                                                                >> 6U))) 
+                                                    | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_ptm__DOT__genblk1__BRA__6__KET____DOT__vld_q))) 
+                                                << 6U) 
+                                               | (((IData)(
+                                                           ((~ 
+                                                             ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
+                                                              >> 5U)) 
+                                                            & (0U 
+                                                               == 
+                                                               (0xc00U 
+                                                                & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)))) 
+                                                   | ((IData)(
+                                                              ((0x400U 
                                                                 == 
-                                                                (0x300U 
-                                                                 & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)))) 
-                                                    | ((IData)(
-                                                               ((0x100U 
-                                                                 == 
-                                                                 (0x300U 
-                                                                  & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)) 
-                                                                & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
-                                                                   >> 4U))) 
-                                                       | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_ptm__DOT__genblk1__BRA__4__KET____DOT__vld_q))) 
-                                                   << 4U) 
-                                                  | ((((IData)(
-                                                               ((~ 
-                                                                 ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
-                                                                  >> 3U)) 
-                                                                & (0U 
-                                                                   == 
-                                                                   (0xc0U 
-                                                                    & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)))) 
-                                                       | ((IData)(
-                                                                  ((0x40U 
-                                                                    == 
-                                                                    (0xc0U 
-                                                                     & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)) 
-                                                                   & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
-                                                                      >> 3U))) 
-                                                          | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_ptm__DOT__genblk1__BRA__3__KET____DOT__vld_q))) 
-                                                      << 3U) 
-                                                     | ((((IData)(
-                                                                  ((~ 
-                                                                    ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
-                                                                     >> 2U)) 
-                                                                   & (0U 
-                                                                      == 
-                                                                      (0x30U 
-                                                                       & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)))) 
-                                                          | ((IData)(
-                                                                     ((0x10U 
-                                                                       == 
-                                                                       (0x30U 
-                                                                        & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)) 
-                                                                      & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
-                                                                         >> 2U))) 
-                                                             | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_ptm__DOT__genblk1__BRA__2__KET____DOT__vld_q))) 
-                                                         << 2U) 
-                                                        | ((((IData)(
-                                                                     ((~ 
-                                                                       ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
-                                                                        >> 1U)) 
-                                                                      & (0U 
-                                                                         == 
-                                                                         (0xcU 
-                                                                          & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)))) 
-                                                             | ((IData)(
-                                                                        ((4U 
-                                                                          == 
-                                                                          (0xcU 
-                                                                           & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)) 
-                                                                         & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
-                                                                            >> 1U))) 
-                                                                | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_ptm__DOT__genblk1__BRA__1__KET____DOT__vld_q))) 
-                                                            << 1U) 
-                                                           | (((~ (IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push)) 
-                                                               & (0U 
-                                                                  == 
-                                                                  (3U 
-                                                                   & vlSelfRef.tb__DOT__u_but__DOT__ptm_q))) 
-                                                              | (((1U 
-                                                                   == 
-                                                                   (3U 
-                                                                    & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)) 
-                                                                  & (IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push)) 
-                                                                 | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_ptm__DOT__genblk1__BRA__0__KET____DOT__vld_q))))))))))));
+                                                                (0xc00U 
+                                                                 & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)) 
+                                                               & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
+                                                                  >> 5U))) 
+                                                      | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_ptm__DOT__genblk1__BRA__5__KET____DOT__vld_q))) 
+                                                  << 5U))) 
+           | (((((IData)(((~ ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
+                              >> 4U)) & (0U == (0x300U 
+                                                & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)))) 
+                 | ((IData)(((0x100U == (0x300U & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)) 
+                             & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
+                                >> 4U))) | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_ptm__DOT__genblk1__BRA__4__KET____DOT__vld_q))) 
+                << 4U) | ((((IData)(((~ ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
+                                         >> 3U)) & 
+                                     (0U == (0xc0U 
+                                             & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)))) 
+                            | ((IData)(((0x40U == (0xc0U 
+                                                   & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)) 
+                                        & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
+                                           >> 3U))) 
+                               | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_ptm__DOT__genblk1__BRA__3__KET____DOT__vld_q))) 
+                           << 3U) | (((IData)(((~ ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
+                                                   >> 2U)) 
+                                               & (0U 
+                                                  == 
+                                                  (0x30U 
+                                                   & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)))) 
+                                      | ((IData)(((0x10U 
+                                                   == 
+                                                   (0x30U 
+                                                    & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)) 
+                                                  & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
+                                                     >> 2U))) 
+                                         | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_ptm__DOT__genblk1__BRA__2__KET____DOT__vld_q))) 
+                                     << 2U))) | ((((IData)(
+                                                           ((~ 
+                                                             ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
+                                                              >> 1U)) 
+                                                            & (0U 
+                                                               == 
+                                                               (0xcU 
+                                                                & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)))) 
+                                                   | ((IData)(
+                                                              ((4U 
+                                                                == 
+                                                                (0xcU 
+                                                                 & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)) 
+                                                               & ((IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push) 
+                                                                  >> 1U))) 
+                                                      | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_ptm__DOT__genblk1__BRA__1__KET____DOT__vld_q))) 
+                                                  << 1U) 
+                                                 | (((~ (IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push)) 
+                                                     & (0U 
+                                                        == 
+                                                        (3U 
+                                                         & vlSelfRef.tb__DOT__u_but__DOT__ptm_q))) 
+                                                    | (((1U 
+                                                         == 
+                                                         (3U 
+                                                          & vlSelfRef.tb__DOT__u_but__DOT__ptm_q)) 
+                                                        & (IData)(vlSelfRef.tb__DOT__u_but__DOT__ext_push)) 
+                                                       | (IData)(vlSelfRef.tb__DOT__u_but__DOT__u_ptm__DOT__genblk1__BRA__0__KET____DOT__vld_q))))));
     vlSelfRef.tb__DOT__u_but__DOT__src = (((IData)(vlSelfRef.tb__DOT__u_but__DOT____Vcellout__u_stm__src) 
                                            << 0xaU) 
                                           | (IData)(vlSelfRef.tb__DOT__u_but__DOT____Vcellout__u_ptm__src));
@@ -614,17 +545,17 @@ VL_ATTR_COLD void Vtb___024root___stl_sequent__TOP__0(Vtb___024root* vlSelf) {
                                     | (((- (IData)((IData)(vlSelfRef.tb__DOT__u_bus__DOT__rng_en_q))) 
                                         & vlSelfRef.tb__DOT__u_rng__DOT__lfsr_q) 
                                        | (((- (IData)((IData)(vlSelfRef.tb__DOT__u_bus__DOT__lcd_en_q))) 
-                                           & ((vlSelfRef.tb__DOT__u_lcd__DOT__disp_q
-                                               [3U] 
-                                               << 0x18U) 
-                                              | ((vlSelfRef.tb__DOT__u_lcd__DOT__disp_q
+                                           & (((vlSelfRef.tb__DOT__u_lcd__DOT__disp_q
+                                                [3U] 
+                                                << 0x18U) 
+                                               | (vlSelfRef.tb__DOT__u_lcd__DOT__disp_q
                                                   [2U] 
-                                                  << 0x10U) 
-                                                 | ((vlSelfRef.tb__DOT__u_lcd__DOT__disp_q
-                                                     [1U] 
-                                                     << 8U) 
-                                                    | vlSelfRef.tb__DOT__u_lcd__DOT__disp_q
-                                                    [0U])))) 
+                                                  << 0x10U)) 
+                                              | ((vlSelfRef.tb__DOT__u_lcd__DOT__disp_q
+                                                  [1U] 
+                                                  << 8U) 
+                                                 | vlSelfRef.tb__DOT__u_lcd__DOT__disp_q
+                                                 [0U]))) 
                                           | ((- (IData)((IData)(vlSelfRef.tb__DOT__u_bus__DOT__but_en_q))) 
                                              & (((- (IData)(
                                                             (1U 
@@ -2746,7 +2677,7 @@ VL_ATTR_COLD bool Vtb___024root___eval_phase__stl(Vtb___024root* vlSelf) {
     (void)vlSelf;  // Prevent unused variable warning
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root___eval_phase__stl\n"); );
-    auto &vlSelfRef = std::ref(*vlSelf).get();
+    auto& vlSelfRef = std::ref(*vlSelf).get();
     // Init
     CData/*0:0*/ __VstlExecute;
     // Body
@@ -2763,7 +2694,7 @@ VL_ATTR_COLD void Vtb___024root___dump_triggers__ico(Vtb___024root* vlSelf) {
     (void)vlSelf;  // Prevent unused variable warning
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root___dump_triggers__ico\n"); );
-    auto &vlSelfRef = std::ref(*vlSelf).get();
+    auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
     if ((1U & (~ vlSelfRef.__VicoTriggered.any()))) {
         VL_DBG_MSGF("         No triggers active\n");
@@ -2782,7 +2713,7 @@ VL_ATTR_COLD void Vtb___024root___dump_triggers__act(Vtb___024root* vlSelf) {
     (void)vlSelf;  // Prevent unused variable warning
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root___dump_triggers__act\n"); );
-    auto &vlSelfRef = std::ref(*vlSelf).get();
+    auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
     if ((1U & (~ vlSelfRef.__VactTriggered.any()))) {
         VL_DBG_MSGF("         No triggers active\n");
@@ -2791,10 +2722,10 @@ VL_ATTR_COLD void Vtb___024root___dump_triggers__act(Vtb___024root* vlSelf) {
         VL_DBG_MSGF("         'act' region trigger index 0 is active: Internal 'act' trigger - DPI export trigger\n");
     }
     if ((2ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 1 is active: @(posedge clk or negedge rst_n)\n");
+        VL_DBG_MSGF("         'act' region trigger index 1 is active: @(posedge clk_i)\n");
     }
     if ((4ULL & vlSelfRef.__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 2 is active: @(posedge clk)\n");
+        VL_DBG_MSGF("         'act' region trigger index 2 is active: @(negedge rst_ni)\n");
     }
     if ((8ULL & vlSelfRef.__VactTriggered.word(0U))) {
         VL_DBG_MSGF("         'act' region trigger index 3 is active: @([event] __VnbaEvent)\n");
@@ -2807,7 +2738,7 @@ VL_ATTR_COLD void Vtb___024root___dump_triggers__nba(Vtb___024root* vlSelf) {
     (void)vlSelf;  // Prevent unused variable warning
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root___dump_triggers__nba\n"); );
-    auto &vlSelfRef = std::ref(*vlSelf).get();
+    auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
     if ((1U & (~ vlSelfRef.__VnbaTriggered.any()))) {
         VL_DBG_MSGF("         No triggers active\n");
@@ -2816,10 +2747,10 @@ VL_ATTR_COLD void Vtb___024root___dump_triggers__nba(Vtb___024root* vlSelf) {
         VL_DBG_MSGF("         'nba' region trigger index 0 is active: Internal 'nba' trigger - DPI export trigger\n");
     }
     if ((2ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 1 is active: @(posedge clk or negedge rst_n)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 1 is active: @(posedge clk_i)\n");
     }
     if ((4ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 2 is active: @(posedge clk)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 2 is active: @(negedge rst_ni)\n");
     }
     if ((8ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         VL_DBG_MSGF("         'nba' region trigger index 3 is active: @([event] __VnbaEvent)\n");
@@ -2827,32 +2758,69 @@ VL_ATTR_COLD void Vtb___024root___dump_triggers__nba(Vtb___024root* vlSelf) {
 }
 #endif  // VL_DEBUG
 
+VL_ATTR_COLD void Vtb___024root____Vm_traceActivitySetAll(Vtb___024root* vlSelf) {
+    (void)vlSelf;  // Prevent unused variable warning
+    Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root____Vm_traceActivitySetAll\n"); );
+    auto& vlSelfRef = std::ref(*vlSelf).get();
+    // Body
+    vlSelfRef.__Vm_traceActivity[0U] = 1U;
+    vlSelfRef.__Vm_traceActivity[1U] = 1U;
+    vlSelfRef.__Vm_traceActivity[2U] = 1U;
+    vlSelfRef.__Vm_traceActivity[3U] = 1U;
+    vlSelfRef.__Vm_traceActivity[4U] = 1U;
+    vlSelfRef.__Vm_traceActivity[5U] = 1U;
+    vlSelfRef.__Vm_traceActivity[6U] = 1U;
+    vlSelfRef.__Vm_traceActivity[7U] = 1U;
+    vlSelfRef.__Vm_traceActivity[8U] = 1U;
+    vlSelfRef.__Vm_traceActivity[9U] = 1U;
+    vlSelfRef.__Vm_traceActivity[0xaU] = 1U;
+    vlSelfRef.__Vm_traceActivity[0xbU] = 1U;
+    vlSelfRef.__Vm_traceActivity[0xcU] = 1U;
+    vlSelfRef.__Vm_traceActivity[0xdU] = 1U;
+    vlSelfRef.__Vm_traceActivity[0xeU] = 1U;
+    vlSelfRef.__Vm_traceActivity[0xfU] = 1U;
+    vlSelfRef.__Vm_traceActivity[0x10U] = 1U;
+    vlSelfRef.__Vm_traceActivity[0x11U] = 1U;
+    vlSelfRef.__Vm_traceActivity[0x12U] = 1U;
+    vlSelfRef.__Vm_traceActivity[0x13U] = 1U;
+    vlSelfRef.__Vm_traceActivity[0x14U] = 1U;
+    vlSelfRef.__Vm_traceActivity[0x15U] = 1U;
+    vlSelfRef.__Vm_traceActivity[0x16U] = 1U;
+    vlSelfRef.__Vm_traceActivity[0x17U] = 1U;
+    vlSelfRef.__Vm_traceActivity[0x18U] = 1U;
+    vlSelfRef.__Vm_traceActivity[0x19U] = 1U;
+    vlSelfRef.__Vm_traceActivity[0x1aU] = 1U;
+    vlSelfRef.__Vm_traceActivity[0x1bU] = 1U;
+    vlSelfRef.__Vm_traceActivity[0x1cU] = 1U;
+}
+
 VL_ATTR_COLD void Vtb___024root___ctor_var_reset(Vtb___024root* vlSelf) {
     (void)vlSelf;  // Prevent unused variable warning
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root___ctor_var_reset\n"); );
-    auto &vlSelfRef = std::ref(*vlSelf).get();
+    auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    vlSelf->clk = 0;
-    vlSelf->rst_n = 0;
-    VL_RAND_RESET_W(120, vlSelf->led_r);
-    VL_RAND_RESET_W(120, vlSelf->led_g);
-    VL_RAND_RESET_W(120, vlSelf->led_b);
-    vlSelf->sevensegment_1 = VL_RAND_RESET_I(8);
-    vlSelf->sevensegment_2 = VL_RAND_RESET_I(8);
-    vlSelf->sevensegment_3 = VL_RAND_RESET_I(8);
-    vlSelf->sevensegment_4 = VL_RAND_RESET_I(8);
-    vlSelf->button_top = VL_RAND_RESET_I(1);
-    vlSelf->button_bottom = VL_RAND_RESET_I(1);
-    vlSelf->button_left = VL_RAND_RESET_I(1);
-    vlSelf->button_right = VL_RAND_RESET_I(1);
-    vlSelf->button_center = VL_RAND_RESET_I(1);
-    vlSelf->joystick_up = VL_RAND_RESET_I(1);
-    vlSelf->joystick_down = VL_RAND_RESET_I(1);
-    vlSelf->joystick_left = VL_RAND_RESET_I(1);
-    vlSelf->joystick_right = VL_RAND_RESET_I(1);
-    vlSelf->joystick_pressed = VL_RAND_RESET_I(1);
-    vlSelf->dip_switches = VL_RAND_RESET_I(8);
+    vlSelf->clk_i = 0;
+    vlSelf->rst_ni = 0;
+    VL_RAND_RESET_W(120, vlSelf->led_r_o);
+    VL_RAND_RESET_W(120, vlSelf->led_g_o);
+    VL_RAND_RESET_W(120, vlSelf->led_b_o);
+    vlSelf->sevensegment_1_o = VL_RAND_RESET_I(8);
+    vlSelf->sevensegment_2_o = VL_RAND_RESET_I(8);
+    vlSelf->sevensegment_3_o = VL_RAND_RESET_I(8);
+    vlSelf->sevensegment_4_o = VL_RAND_RESET_I(8);
+    vlSelf->button_top_i = VL_RAND_RESET_I(1);
+    vlSelf->button_bottom_i = VL_RAND_RESET_I(1);
+    vlSelf->button_left_i = VL_RAND_RESET_I(1);
+    vlSelf->button_right_i = VL_RAND_RESET_I(1);
+    vlSelf->button_center_i = VL_RAND_RESET_I(1);
+    vlSelf->joystick_up_i = VL_RAND_RESET_I(1);
+    vlSelf->joystick_down_i = VL_RAND_RESET_I(1);
+    vlSelf->joystick_left_i = VL_RAND_RESET_I(1);
+    vlSelf->joystick_right_i = VL_RAND_RESET_I(1);
+    vlSelf->joystick_pressed_i = VL_RAND_RESET_I(1);
+    vlSelf->dip_switches_i = VL_RAND_RESET_I(8);
     vlSelf->tb__DOT__bus_en = VL_RAND_RESET_I(1);
     vlSelf->tb__DOT__bus_we = VL_RAND_RESET_I(1);
     vlSelf->tb__DOT__bus_addr = VL_RAND_RESET_I(32);
@@ -3319,10 +3287,10 @@ VL_ATTR_COLD void Vtb___024root___ctor_var_reset(Vtb___024root* vlSelf) {
     vlSelf->__Vdpi_export_trigger = 0;
     vlSelf->__VnbaEventTrigger = 0;
     vlSelf->__Vdly__tb__DOT__u_cpu__DOT__csr_mepc_q = VL_RAND_RESET_I(32);
-    vlSelf->__Vtrigprevexpr___TOP__clk__0 = VL_RAND_RESET_I(1);
-    vlSelf->__Vtrigprevexpr___TOP__rst_n__0 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigprevexpr___TOP__clk_i__0 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigprevexpr___TOP__rst_ni__0 = VL_RAND_RESET_I(1);
     vlSelf->__VactDidInit = 0;
-    for (int __Vi0 = 0; __Vi0 < 30; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 29; ++__Vi0) {
         vlSelf->__Vm_traceActivity[__Vi0] = 0;
     }
 }
