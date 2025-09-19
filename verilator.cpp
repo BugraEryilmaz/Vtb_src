@@ -338,16 +338,16 @@ public:
 
   void runinsn() {
     if (isValid_cpu_get_pc(*g_top)) {
-      if (pc() == 0) {
-        // Gracefully stop and do nothing
-        onEvent(Event::Stepped, std::nullopt);
-        return;
-      }
       auto prev_line = getLine();
       auto prev_file = getFile();
       auto counter = 0;
       while (prev_line == getLine() && prev_file == getFile() &&
              counter < 100) {
+        if (pc() == 0) {
+          // Gracefully stop and do nothing
+          onEvent(Event::Stepped, std::nullopt);
+          return;
+        }
         runclk();
         counter++;
       }
@@ -470,14 +470,6 @@ public:
     bool starting = true;
     int counter = 0;
     while (running) {
-      if (isValid_cpu_get_pc(*g_top)) {
-        if (pc() == 0) {
-          // Gracefully stop
-          onEvent(Event::BreakpointHit, std::nullopt);
-          checkBoard();
-          return;
-        }
-      }
       if (breakpointHit()) {
         if (starting) {
           // run one instruction and ignore breakpoint
@@ -487,6 +479,14 @@ public:
           auto counter = 0;
           while (prev_line == getLine() && prev_file == getFile() &&
                  counter < 100) {
+            if (isValid_cpu_get_pc(*g_top)) {
+              if (pc() == 0) {
+                // Gracefully stop
+                onEvent(Event::BreakpointHit, std::nullopt);
+                checkBoard();
+                return;
+              }
+            }
             runclk();
             counter++;
           }
@@ -501,6 +501,14 @@ public:
       // fix the speed to 10KHz cycle => 1.3k instructions per second
       std::this_thread::sleep_until(start +
                                     std::chrono::microseconds(100 * counter));
+      if (isValid_cpu_get_pc(*g_top)) {
+        if (pc() == 0) {
+          // Gracefully stop
+          onEvent(Event::BreakpointHit, std::nullopt);
+          checkBoard();
+          return;
+        }
+      }
       runclk();
       counter = counter + 1;
 
