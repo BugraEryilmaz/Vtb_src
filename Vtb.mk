@@ -17,7 +17,18 @@ VERILATOR_ROOT ?= $(shell \
 	if [ -n "$$VERILATOR_ROOT" ]; then \
 		echo "$$VERILATOR_ROOT"; \
 	elif command -v verilator >/dev/null 2>&1; then \
-		verilator -V 2>/dev/null | sed -n 's/^[[:space:]]*VERILATOR_ROOT[[:space:]]*=[[:space:]]*//p' | tail -n 1; \
+		verilator -V 2>/dev/null | awk '\
+			/^Summary of configuration:/ { section="summary"; next } \
+			/^Environment:/              { section="env"; next } \
+			/^[^[:space:]]/              { section=""; next } \
+			$$1 == "VERILATOR_ROOT" && $$2 == "=" { \
+				sub(/^[^=]*=[[:space:]]*/, ""); \
+				if ($$0 != "") { \
+					if (section == "env") { print; found=1; exit } \
+					if (section == "summary") fallback=$$0 \
+				} \
+			} \
+			END { if (!found && fallback != "") print fallback }'; \
 	fi)
 
 # Fail early with a helpful message if we still can't find verilated.mk
