@@ -7,14 +7,39 @@
 default: Vtb
 
 ### Constants...
-# Perl executable (from $PERL)
+# Perl executable (from $PERL, defaults to 'perl' if not set)
 PERL = perl
+# Python3 executable (from $PYTHON3, defaults to 'python3' if not set)
+PYTHON3 = python3
 # Path to Verilator kit (from $VERILATOR_ROOT)
-VERILATOR_ROOT = /usr/share/verilator
+# Try to infer VERILATOR_ROOT from the verilator in PATH if not explicitly set
+VERILATOR_ROOT ?= $(shell \
+	if [ -n "$$VERILATOR_ROOT" ]; then \
+		echo "$$VERILATOR_ROOT"; \
+	elif command -v verilator >/dev/null 2>&1; then \
+		verilator -V 2>/dev/null | awk '\
+			/^Summary of configuration:/ { section="summary"; next } \
+			/^Environment:/              { section="env"; next } \
+			/^[^[:space:]]/              { section=""; next } \
+			$$1 == "VERILATOR_ROOT" && $$2 == "=" { \
+				sub(/^[^=]*=[[:space:]]*/, ""); \
+				if ($$0 != "") { \
+					if (section == "env") { print; found=1; exit } \
+					if (section == "summary") fallback=$$0 \
+				} \
+			} \
+			END { if (!found && fallback != "") print fallback }'; \
+	fi)
+
+# Fail early with a helpful message if we still can't find verilated.mk
+ifeq ($(strip $(VERILATOR_ROOT)),)
+  $(error VERILATOR_ROOT is not set and could not be derived from PATH. Ensure Verilator is installed or export VERILATOR_ROOT.)
+endif
+
 # SystemC include directory with systemc.h (from $SYSTEMC_INCLUDE)
-SYSTEMC_INCLUDE ?= 
+SYSTEMC_INCLUDE ?=
 # SystemC library directory with libsystemc.a (from $SYSTEMC_LIBDIR)
-SYSTEMC_LIBDIR ?= 
+SYSTEMC_LIBDIR ?=
 
 ### Switches...
 # C++ code coverage  0/1 (from --prof-c)
@@ -53,33 +78,24 @@ VM_USER_CLASSES = \
 	pcToLine \
 	verilator \
 
-# User .cpp directories (from .cpp's on Verilator command line)
-VM_USER_DIR = \
-	/home/eryilmaz/cs-200/infrastructure/debugger \
-	/home/eryilmaz/cs-200/infrastructure/debugger/../processor \
-
-
 ### Default rules...
 # Include list of all generated classes
 include Vtb_classes.mk
 # Include global rules
 include $(VERILATOR_ROOT)/include/verilated.mk
 
-### Executable rules... (from --exe)
-VPATH += $(VM_USER_DIR)
-
-mem.o: /home/eryilmaz/cs-200/infrastructure/debugger/../processor/mem.cpp
-	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
-base64.o: /home/eryilmaz/cs-200/infrastructure/debugger/base64.cpp
-	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
-dapDefines.o: /home/eryilmaz/cs-200/infrastructure/debugger/dapDefines.cpp
-	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
-debugAdapter.o: /home/eryilmaz/cs-200/infrastructure/debugger/debugAdapter.cpp
-	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
-pcToLine.o: /home/eryilmaz/cs-200/infrastructure/debugger/pcToLine.cpp
-	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
-verilator.o: /home/eryilmaz/cs-200/infrastructure/debugger/verilator.cpp
-	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
+mem.o: mem.cpp
+	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST)  -c -o $@ $<
+base64.o: base64.cpp
+	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST)  -c -o $@ $<
+dapDefines.o: dapDefines.cpp
+	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST)  -c -o $@ $<
+debugAdapter.o: debugAdapter.cpp
+	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST)  -c -o $@ $<
+pcToLine.o: pcToLine.cpp
+	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST)  -c -o $@ $<
+verilator.o: verilator.cpp
+	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST)  -c -o $@ $<
 
 ### Link rules... (from --exe)
 Vtb: $(VK_USER_OBJS) $(VK_GLOBAL_OBJS) $(VM_PREFIX)__ALL.a $(VM_HIER_LIBS)
