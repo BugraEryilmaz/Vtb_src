@@ -33,8 +33,6 @@ Vtb__Syms::Vtb__Syms(VerilatedContext* contextp, const char* namep, Vtb* modelp)
     // Setup module instances
     , TOP{this, namep}
 {
-        // Check resources
-        Verilated::stackCheck(478);
     // Configure time unit / time precision
     _vm_contextp__->timeunit(-9);
     _vm_contextp__->timeprecision(-9);
@@ -42,10 +40,10 @@ Vtb__Syms::Vtb__Syms(VerilatedContext* contextp, const char* namep, Vtb* modelp)
     // Setup each module's pointer back to symbol table (for public functions)
     TOP.__Vconfigure(true);
     // Setup scopes
-    __Vscope_tb__u_but.configure(this, name(), "tb.u_but", "u_but", "<null>", -9, VerilatedScope::SCOPE_OTHER);
-    __Vscope_tb__u_cpu.configure(this, name(), "tb.u_cpu", "u_cpu", "<null>", -9, VerilatedScope::SCOPE_OTHER);
-    __Vscope_tb__u_lcd.configure(this, name(), "tb.u_lcd", "u_lcd", "<null>", -9, VerilatedScope::SCOPE_OTHER);
-    __Vscope_tb__u_led.configure(this, name(), "tb.u_led", "u_led", "<null>", -9, VerilatedScope::SCOPE_OTHER);
+    __Vscope_tb__u_but.configure(this, name(), "tb.u_but", "u_but", -9, VerilatedScope::SCOPE_OTHER);
+    __Vscope_tb__u_cpu.configure(this, name(), "tb.u_cpu", "u_cpu", -9, VerilatedScope::SCOPE_OTHER);
+    __Vscope_tb__u_lcd.configure(this, name(), "tb.u_lcd", "u_lcd", -9, VerilatedScope::SCOPE_OTHER);
+    __Vscope_tb__u_led.configure(this, name(), "tb.u_led", "u_led", -9, VerilatedScope::SCOPE_OTHER);
     // Setup export functions
     for (int __Vfinal = 0; __Vfinal < 2; ++__Vfinal) {
         __Vscope_tb__u_but.exportInsert(__Vfinal, "but_rd", (void*)(&Vtb___024root____Vdpiexp_tb__DOT__u_but__DOT__but_rd_TOP));

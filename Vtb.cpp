@@ -10,7 +10,12 @@
 Vtb::Vtb(VerilatedContext* _vcontextp__, const char* _vcname__)
     : VerilatedModel{*_vcontextp__}
     , vlSymsp{new Vtb__Syms(contextp(), _vcname__, this)}
-    , rst_ni{vlSymsp->TOP.rst_ni}
+    , led_g_o{vlSymsp->TOP.led_g_o}
+    , led_b_o{vlSymsp->TOP.led_b_o}
+    , sevensegment_1_o{vlSymsp->TOP.sevensegment_1_o}
+    , sevensegment_2_o{vlSymsp->TOP.sevensegment_2_o}
+    , sevensegment_3_o{vlSymsp->TOP.sevensegment_3_o}
+    , sevensegment_4_o{vlSymsp->TOP.sevensegment_4_o}
     , button_top_i{vlSymsp->TOP.button_top_i}
     , button_bottom_i{vlSymsp->TOP.button_bottom_i}
     , button_left_i{vlSymsp->TOP.button_left_i}
@@ -22,20 +27,13 @@ Vtb::Vtb(VerilatedContext* _vcontextp__, const char* _vcname__)
     , joystick_right_i{vlSymsp->TOP.joystick_right_i}
     , joystick_pressed_i{vlSymsp->TOP.joystick_pressed_i}
     , dip_switches_i{vlSymsp->TOP.dip_switches_i}
-    , sevensegment_1_o{vlSymsp->TOP.sevensegment_1_o}
-    , sevensegment_2_o{vlSymsp->TOP.sevensegment_2_o}
-    , sevensegment_3_o{vlSymsp->TOP.sevensegment_3_o}
-    , sevensegment_4_o{vlSymsp->TOP.sevensegment_4_o}
+    , rst_ni{vlSymsp->TOP.rst_ni}
     , led_r_o{vlSymsp->TOP.led_r_o}
-    , led_g_o{vlSymsp->TOP.led_g_o}
-    , led_b_o{vlSymsp->TOP.led_b_o}
     , clk_i{vlSymsp->TOP.clk_i}
     , rootp{&(vlSymsp->TOP)}
 {
     // Register model with the context
     contextp()->addModel(this);
-    contextp()->traceBaseModelCbAdd(
-        [this](VerilatedTraceBaseC* tfp, int levels, int options) { traceBaseModel(tfp, levels, options); });
 }
 
 Vtb::Vtb(const char* _vcname__)
@@ -88,7 +86,7 @@ void Vtb::eval_step() {
 bool Vtb::eventsPending() { return false; }
 
 uint64_t Vtb::nextTimeSlot() {
-    VL_FATAL_MT(__FILE__, __LINE__, "", "No delays in the design");
+    VL_FATAL_MT(__FILE__, __LINE__, "", "%Error: No delays in the design");
     return 0;
 }
 
@@ -146,14 +144,12 @@ VL_ATTR_COLD static void trace_init(void* voidSelf, VerilatedVcd* tracep, uint32
 
 VL_ATTR_COLD void Vtb___024root__trace_register(Vtb___024root* vlSelf, VerilatedVcd* tracep);
 
-VL_ATTR_COLD void Vtb::traceBaseModel(VerilatedTraceBaseC* tfp, int levels, int options) {
-    (void)levels; (void)options;
-    VerilatedVcdC* const stfp = dynamic_cast<VerilatedVcdC*>(tfp);
-    if (VL_UNLIKELY(!stfp)) {
-        vl_fatal(__FILE__, __LINE__, __FILE__,"'Vtb::trace()' called on non-VerilatedVcdC object;"
-            " use --trace-fst with VerilatedFst object, and --trace with VerilatedVcd object");
+VL_ATTR_COLD void Vtb::trace(VerilatedVcdC* tfp, int levels, int options) {
+    if (tfp->isOpen()) {
+        vl_fatal(__FILE__, __LINE__, __FILE__,"'Vtb::trace()' shall not be called after 'VerilatedVcdC::open()'.");
     }
-    stfp->spTrace()->addModel(this);
-    stfp->spTrace()->addInitCb(&trace_init, &(vlSymsp->TOP));
-    Vtb___024root__trace_register(&(vlSymsp->TOP), stfp->spTrace());
+    if (false && levels && options) {}  // Prevent unused
+    tfp->spTrace()->addModel(this);
+    tfp->spTrace()->addInitCb(&trace_init, &(vlSymsp->TOP));
+    Vtb___024root__trace_register(&(vlSymsp->TOP), tfp->spTrace());
 }

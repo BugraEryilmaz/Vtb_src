@@ -24,14 +24,15 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb VL_NOT_FINAL : public VerilatedModel {
 
   public:
 
-    // CONSTEXPR CAPABILITIES
-    // Verilated with --trace?
-    static constexpr bool traceCapable = true;
-
     // PORTS
     // The application code writes and reads these signals to
     // propagate new values into/out from the Verilated model.
-    VL_IN8(&rst_ni,0,0);
+    VL_OUTW(&led_g_o,119,0,4);
+    VL_OUTW(&led_b_o,119,0,4);
+    VL_OUT8(&sevensegment_1_o,7,0);
+    VL_OUT8(&sevensegment_2_o,7,0);
+    VL_OUT8(&sevensegment_3_o,7,0);
+    VL_OUT8(&sevensegment_4_o,7,0);
     VL_IN8(&button_top_i,0,0);
     VL_IN8(&button_bottom_i,0,0);
     VL_IN8(&button_left_i,0,0);
@@ -43,13 +44,8 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb VL_NOT_FINAL : public VerilatedModel {
     VL_IN8(&joystick_right_i,0,0);
     VL_IN8(&joystick_pressed_i,0,0);
     VL_IN8(&dip_switches_i,7,0);
-    VL_OUT8(&sevensegment_1_o,7,0);
-    VL_OUT8(&sevensegment_2_o,7,0);
-    VL_OUT8(&sevensegment_3_o,7,0);
-    VL_OUT8(&sevensegment_4_o,7,0);
+    VL_IN8(&rst_ni,0,0);
     VL_OUTW(&led_r_o,119,0,4);
-    VL_OUTW(&led_g_o,119,0,4);
-    VL_OUTW(&led_b_o,119,0,4);
     VL_IN8(&clk_i,0,0);
 
     // CELLS
@@ -88,7 +84,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb VL_NOT_FINAL : public VerilatedModel {
     /// Returns time at next time slot. Aborts if !eventsPending()
     uint64_t nextTimeSlot();
     /// Trace signals in the model; called by application code
-    void trace(VerilatedTraceBaseC* tfp, int levels, int options = 0) { contextp()->trace(tfp, levels, options); }
+    void trace(VerilatedVcdC* tfp, int levels, int options = 0);
     /// Retrieve name of this model instance (as passed to constructor).
     const char* name() const;
 
@@ -119,9 +115,6 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb VL_NOT_FINAL : public VerilatedModel {
     /// Re-allocate necessary resources. Called after cloning.
     void atClone() const;
     std::unique_ptr<VerilatedTraceConfig> traceConfig() const override final;
-  private:
-    // Internal functions - trace registration
-    void traceBaseModel(VerilatedTraceBaseC* tfp, int levels, int options);
 };
 
 #endif  // guard

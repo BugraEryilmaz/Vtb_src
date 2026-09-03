@@ -24,6 +24,4 @@
 #include "Vtb__Syms.h"
 #include "Vtb.h"
 
-// Additional include files added using '--compiler-include'
-
 #endif  // guard
