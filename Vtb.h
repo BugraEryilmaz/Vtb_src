@@ -42,11 +42,11 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb VL_NOT_FINAL : public VerilatedModel {
     VL_IN8(&joystick_left_i,0,0);
     VL_IN8(&joystick_right_i,0,0);
     VL_IN8(&joystick_pressed_i,0,0);
+    VL_IN8(&dip_switches_i,7,0);
     VL_OUT8(&sevensegment_1_o,7,0);
     VL_OUT8(&sevensegment_2_o,7,0);
     VL_OUT8(&sevensegment_3_o,7,0);
     VL_OUT8(&sevensegment_4_o,7,0);
-    VL_IN8(&dip_switches_i,7,0);
     VL_OUTW(&led_r_o,119,0,4);
     VL_OUTW(&led_g_o,119,0,4);
     VL_OUTW(&led_b_o,119,0,4);

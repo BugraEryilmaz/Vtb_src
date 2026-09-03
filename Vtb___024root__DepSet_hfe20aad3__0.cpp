@@ -17,17 +17,9 @@ void Vtb___024root____Vdpiexp_tb__DOT__u_cpu__DOT__cpu_get_gpr_TOP(Vtb__Syms* __
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root____Vdpiexp_tb__DOT__u_cpu__DOT__cpu_get_gpr_TOP\n"); );
     // Init
     // Body
-    {
-        if (((0U < idx) & (0x20U > idx))) {
-            cpu_get_gpr__Vfuncrtn = vlSymsp->TOP.tb__DOT__u_cpu__DOT__gpr_q
-                [(0x1fU & idx)];
-            goto __Vlabel1;
-        } else {
-            cpu_get_gpr__Vfuncrtn = 0U;
-            goto __Vlabel1;
-        }
-        __Vlabel1: ;
-    }
+    cpu_get_gpr__Vfuncrtn = (((0U < idx) & (0x20U > idx))
+                              ? vlSymsp->TOP.tb__DOT__u_cpu__DOT__gpr_q
+                             [(0x1fU & idx)] : 0U);
 }
 
 void Vtb___024root____Vdpiexp_tb__DOT__u_cpu__DOT__cpu_get_csr_TOP(Vtb__Syms* __restrict vlSymsp, IData/*31:0*/ idx, IData/*31:0*/ &cpu_get_csr__Vfuncrtn) {
@@ -37,28 +29,27 @@ void Vtb___024root____Vdpiexp_tb__DOT__u_cpu__DOT__cpu_get_csr_TOP(Vtb__Syms* __
     {
         if ((0x300U == idx)) {
             cpu_get_csr__Vfuncrtn = vlSymsp->TOP.tb__DOT__u_cpu__DOT__csr_mstatus;
-            goto __Vlabel2;
         } else if ((0x304U == idx)) {
             cpu_get_csr__Vfuncrtn = vlSymsp->TOP.tb__DOT__u_cpu__DOT__csr_mie;
-            goto __Vlabel2;
+            goto __Vlabel1;
         } else if ((0x305U == idx)) {
             cpu_get_csr__Vfuncrtn = vlSymsp->TOP.tb__DOT__u_cpu__DOT__csr_mtvec_q;
-            goto __Vlabel2;
+            goto __Vlabel1;
         } else if ((0x341U == idx)) {
             cpu_get_csr__Vfuncrtn = vlSymsp->TOP.tb__DOT__u_cpu__DOT__csr_mepc_q;
-            goto __Vlabel2;
+            goto __Vlabel1;
         } else if ((0x342U == idx)) {
             cpu_get_csr__Vfuncrtn = vlSymsp->TOP.tb__DOT__u_cpu__DOT__csr_mcause;
-            goto __Vlabel2;
+            goto __Vlabel1;
         } else if ((0x344U == idx)) {
             cpu_get_csr__Vfuncrtn = ((IData)((0U != vlSymsp->TOP.tb__DOT__u_but__DOT__src)) 
                                      << 0xbU);
-            goto __Vlabel2;
+            goto __Vlabel1;
         } else {
             cpu_get_csr__Vfuncrtn = 0U;
-            goto __Vlabel2;
+            goto __Vlabel1;
         }
-        __Vlabel2: ;
+        __Vlabel1: ;
     }
 }
 
@@ -276,17 +267,8 @@ void Vtb___024root____Vdpiexp_tb__DOT__u_lcd__DOT__lcd_rd_TOP(Vtb__Syms* __restr
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root____Vdpiexp_tb__DOT__u_lcd__DOT__lcd_rd_TOP\n"); );
     // Init
     // Body
-    {
-        if ((4U > idx)) {
-            lcd_rd__Vfuncrtn = vlSymsp->TOP.tb__DOT__u_lcd__DOT__disp_q
-                [(3U & idx)];
-            goto __Vlabel3;
-        } else {
-            lcd_rd__Vfuncrtn = 0U;
-            goto __Vlabel3;
-        }
-        __Vlabel3: ;
-    }
+    lcd_rd__Vfuncrtn = ((4U > idx) ? vlSymsp->TOP.tb__DOT__u_lcd__DOT__disp_q
+                        [(3U & idx)] : 0U);
 }
 
 VlCoroutine Vtb___024root____Vdpiexp_tb__DOT__u_lcd__DOT__lcd_wr_TOP____Vfork_15__2(Vtb___024root* vlSelf, CData/*7:0*/ __Vintraval_hd64d024f__0, CData/*1:0*/ __Vintraidx_h2193dab5__0);
@@ -341,9 +323,8 @@ VL_ATTR_COLD void Vtb___024root___dump_triggers__ico(Vtb___024root* vlSelf);
 #endif  // VL_DEBUG
 
 void Vtb___024root___eval_triggers__ico(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
-    Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root___eval_triggers__ico\n"); );
+    Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
     vlSelfRef.__VicoTriggered.set(0U, (IData)(vlSelfRef.__VicoFirstIteration));
@@ -361,9 +342,8 @@ VL_ATTR_COLD void Vtb___024root___dump_triggers__act(Vtb___024root* vlSelf);
 #endif  // VL_DEBUG
 
 void Vtb___024root___eval_triggers__act(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
-    Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root___eval_triggers__act\n"); );
+    Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
     vlSelfRef.__VactTriggered.set(0U, (IData)(vlSelfRef.__Vdpi_export_trigger));
@@ -375,10 +355,8 @@ void Vtb___024root___eval_triggers__act(Vtb___024root* vlSelf) {
     vlSelfRef.__VactTriggered.set(3U, vlSelfRef.__VnbaEvent.isFired());
     vlSelfRef.__Vtrigprevexpr___TOP__clk_i__0 = vlSelfRef.clk_i;
     vlSelfRef.__Vtrigprevexpr___TOP__rst_ni__0 = vlSelfRef.rst_ni;
-    if (vlSelfRef.__VnbaEvent.isFired()) {
-        vlSelfRef.__VnbaEvent.clearFired();
-    }
-    if (VL_UNLIKELY((1U & (~ (IData)(vlSelfRef.__VactDidInit))))) {
+    vlSelfRef.__VnbaEvent.clearFired();
+    if (VL_UNLIKELY(((1U & (~ (IData)(vlSelfRef.__VactDidInit)))))) {
         vlSelfRef.__VactDidInit = 1U;
         vlSelfRef.__VactTriggered.set(1U, 1U);
         vlSelfRef.__VactTriggered.set(2U, 1U);
@@ -397,9 +375,8 @@ void Vtb___024root____Vthread__nba__2(void* voidSelf, bool even_cycle);
 void Vtb___024root____Vthread__nba__3(void* voidSelf, bool even_cycle);
 
 void Vtb___024root___eval_nba(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
-    Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root___eval_nba\n"); );
+    Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
     vlSymsp->__Vm_even_cycle__nba = !vlSymsp->__Vm_even_cycle__nba;
@@ -412,105 +389,120 @@ void Vtb___024root___eval_nba(Vtb___024root* vlSelf) {
 }
 
 void Vtb___024root___nba_sequent__TOP__0(Vtb___024root* vlSelf);
+void Vtb___024root___nba_sequent__TOP__1(Vtb___024root* vlSelf);
+void Vtb___024root___nba_comb__TOP__0(Vtb___024root* vlSelf);
+void Vtb___024root___nba_sequent__TOP__2(Vtb___024root* vlSelf);
+void Vtb___024root___nba_comb__TOP__1(Vtb___024root* vlSelf);
 
 void Vtb___024root__nba_mtask0(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
-    Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask0\n"); );
+    Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
     Verilated::mtaskId(0);
-    if ((6ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((2ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_sequent__TOP__0(vlSelf);
+        vlSelfRef.__Vm_traceActivity[4U] = 1U;
     }
-    Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
-}
-
-void Vtb___024root___nba_sequent__TOP__1(Vtb___024root* vlSelf);
-
-void Vtb___024root__nba_mtask1(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
-    Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask1\n"); );
-    auto& vlSelfRef = std::ref(*vlSelf).get();
-    // Body
-    Verilated::mtaskId(1);
     if ((6ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_sequent__TOP__1(vlSelf);
+        vlSelfRef.__Vm_traceActivity[5U] = 1U;
     }
-    Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
-}
-
-void Vtb___024root___nba_sequent__TOP__2(Vtb___024root* vlSelf);
-
-void Vtb___024root__nba_mtask2(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
-    Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask2\n"); );
-    auto& vlSelfRef = std::ref(*vlSelf).get();
-    // Body
-    Verilated::mtaskId(2);
-    if ((6ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    if ((3ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        Vtb___024root___nba_comb__TOP__0(vlSelf);
+    }
+    if ((2ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_sequent__TOP__2(vlSelf);
+    }
+    if ((7ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        Vtb___024root___nba_comb__TOP__1(vlSelf);
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
 }
 
 void Vtb___024root___nba_sequent__TOP__3(Vtb___024root* vlSelf);
-void Vtb___024root___nba_sequent__TOP__4(Vtb___024root* vlSelf);
-void Vtb___024root___nba_comb__TOP__0(Vtb___024root* vlSelf);
 
-void Vtb___024root__nba_mtask3(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
+void Vtb___024root__nba_mtask1(Vtb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask1\n"); );
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask3\n"); );
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    Verilated::mtaskId(3);
-    if ((2ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+    Verilated::mtaskId(1);
+    if ((6ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_sequent__TOP__3(vlSelf);
-        vlSelfRef.__Vm_traceActivity[4U] = 1U;
     }
+    Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
+}
+
+void Vtb___024root___nba_sequent__TOP__4(Vtb___024root* vlSelf);
+
+void Vtb___024root__nba_mtask2(Vtb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask2\n"); );
+    Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    auto& vlSelfRef = std::ref(*vlSelf).get();
+    // Body
+    Verilated::mtaskId(2);
     if ((6ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_sequent__TOP__4(vlSelf);
-        vlSelfRef.__Vm_traceActivity[5U] = 1U;
-    }
-    if ((7ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        Vtb___024root___nba_comb__TOP__0(vlSelf);
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
 }
 
 void Vtb___024root___nba_sequent__TOP__5(Vtb___024root* vlSelf);
+
+void Vtb___024root__nba_mtask3(Vtb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask3\n"); );
+    Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    auto& vlSelfRef = std::ref(*vlSelf).get();
+    // Body
+    Verilated::mtaskId(3);
+    if ((6ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        Vtb___024root___nba_sequent__TOP__5(vlSelf);
+    }
+    Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
+}
+
 void Vtb___024root___nba_sequent__TOP__6(Vtb___024root* vlSelf);
 void Vtb___024root___nba_sequent__TOP__7(Vtb___024root* vlSelf);
-void Vtb___024root___nba_comb__TOP__1(Vtb___024root* vlSelf);
-void Vtb___024root___nba_sequent__TOP__8(Vtb___024root* vlSelf);
-void Vtb___024root___nba_comb__TOP__2(Vtb___024root* vlSelf);
 
 void Vtb___024root__nba_mtask4(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
-    Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask4\n"); );
+    Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
     Verilated::mtaskId(4);
     if ((2ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        Vtb___024root___nba_sequent__TOP__5(vlSelf);
+        Vtb___024root___nba_sequent__TOP__6(vlSelf);
         vlSelfRef.__Vm_traceActivity[6U] = 1U;
     }
     if ((6ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        Vtb___024root___nba_sequent__TOP__6(vlSelf);
+        Vtb___024root___nba_sequent__TOP__7(vlSelf);
         vlSelfRef.__Vm_traceActivity[7U] = 1U;
     }
-    if ((1ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        Vtb___024root___nba_sequent__TOP__7(vlSelf);
-    }
-    if ((3ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        Vtb___024root___nba_comb__TOP__1(vlSelf);
-    }
+    Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
+}
+
+void Vtb___024root___nba_sequent__TOP__8(Vtb___024root* vlSelf);
+void Vtb___024root___nba_sequent__TOP__9(Vtb___024root* vlSelf);
+void Vtb___024root___nba_sequent__TOP__10(Vtb___024root* vlSelf);
+void Vtb___024root___nba_comb__TOP__2(Vtb___024root* vlSelf);
+
+void Vtb___024root__nba_mtask5(Vtb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask5\n"); );
+    Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    auto& vlSelfRef = std::ref(*vlSelf).get();
+    // Body
+    Verilated::mtaskId(5);
     if ((2ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_sequent__TOP__8(vlSelf);
+        vlSelfRef.__Vm_traceActivity[8U] = 1U;
+    }
+    if ((6ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        Vtb___024root___nba_sequent__TOP__9(vlSelf);
+        vlSelfRef.__Vm_traceActivity[9U] = 1U;
+    }
+    if ((1ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        Vtb___024root___nba_sequent__TOP__10(vlSelf);
     }
     if ((7ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_comb__TOP__2(vlSelf);
@@ -518,328 +510,318 @@ void Vtb___024root__nba_mtask4(Vtb___024root* vlSelf) {
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
 }
 
-void Vtb___024root___nba_sequent__TOP__9(Vtb___024root* vlSelf);
-void Vtb___024root___nba_sequent__TOP__10(Vtb___024root* vlSelf);
 void Vtb___024root___nba_sequent__TOP__11(Vtb___024root* vlSelf);
+void Vtb___024root___nba_sequent__TOP__13(Vtb___024root* vlSelf);
 void Vtb___024root___nba_comb__TOP__3(Vtb___024root* vlSelf);
 
-void Vtb___024root__nba_mtask5(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
+void Vtb___024root__nba_mtask6(Vtb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask6\n"); );
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask5\n"); );
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    Verilated::mtaskId(5);
+    Verilated::mtaskId(6);
     if ((6ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        Vtb___024root___nba_sequent__TOP__9(vlSelf);
-        vlSelfRef.__Vm_traceActivity[8U] = 1U;
-    }
-    if ((2ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        Vtb___024root___nba_sequent__TOP__10(vlSelf);
-        vlSelfRef.__Vm_traceActivity[9U] = 1U;
+        Vtb___024root___nba_sequent__TOP__11(vlSelf);
+        vlSelfRef.__Vm_traceActivity[0xaU] = 1U;
     }
     if ((1ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        Vtb___024root___nba_sequent__TOP__11(vlSelf);
+        Vtb___024root___nba_sequent__TOP__13(vlSelf);
     }
     if ((7ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_comb__TOP__3(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0xaU] = 1U;
+        vlSelfRef.__Vm_traceActivity[0xbU] = 1U;
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
 }
 
 void Vtb___024root___nba_comb__TOP__4(Vtb___024root* vlSelf);
-void Vtb___024root___nba_sequent__TOP__12(Vtb___024root* vlSelf);
+void Vtb___024root___nba_sequent__TOP__14(Vtb___024root* vlSelf);
 void Vtb___024root___nba_comb__TOP__5(Vtb___024root* vlSelf);
 
-void Vtb___024root__nba_mtask6(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
+void Vtb___024root__nba_mtask7(Vtb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask7\n"); );
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask6\n"); );
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    Verilated::mtaskId(6);
+    Verilated::mtaskId(7);
     if ((7ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_comb__TOP__4(vlSelf);
     }
     if ((6ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
-        Vtb___024root___nba_sequent__TOP__12(vlSelf);
+        Vtb___024root___nba_sequent__TOP__14(vlSelf);
     }
     if ((7ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_comb__TOP__5(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0xbU] = 1U;
+        vlSelfRef.__Vm_traceActivity[0xcU] = 1U;
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
 }
 
 void Vtb___024root___nba_comb__TOP__6(Vtb___024root* vlSelf);
 
-void Vtb___024root__nba_mtask7(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
+void Vtb___024root__nba_mtask8(Vtb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask8\n"); );
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask7\n"); );
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    Verilated::mtaskId(7);
+    Verilated::mtaskId(8);
     if ((7ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_comb__TOP__6(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0xcU] = 1U;
+        vlSelfRef.__Vm_traceActivity[0xdU] = 1U;
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
 }
 
 void Vtb___024root___nba_comb__TOP__7(Vtb___024root* vlSelf);
 
-void Vtb___024root__nba_mtask8(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
+void Vtb___024root__nba_mtask9(Vtb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask9\n"); );
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask8\n"); );
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    Verilated::mtaskId(8);
+    Verilated::mtaskId(9);
     if ((7ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_comb__TOP__7(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0xdU] = 1U;
+        vlSelfRef.__Vm_traceActivity[0xeU] = 1U;
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
 }
 
 void Vtb___024root___nba_comb__TOP__8(Vtb___024root* vlSelf);
 
-void Vtb___024root__nba_mtask9(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
+void Vtb___024root__nba_mtask10(Vtb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask10\n"); );
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask9\n"); );
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    Verilated::mtaskId(9);
+    Verilated::mtaskId(10);
     if ((7ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_comb__TOP__8(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0xeU] = 1U;
+        vlSelfRef.__Vm_traceActivity[0xfU] = 1U;
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
 }
 
 void Vtb___024root___nba_comb__TOP__9(Vtb___024root* vlSelf);
 
-void Vtb___024root__nba_mtask10(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
+void Vtb___024root__nba_mtask11(Vtb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask11\n"); );
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask10\n"); );
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    Verilated::mtaskId(10);
+    Verilated::mtaskId(11);
     if ((7ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_comb__TOP__9(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0xfU] = 1U;
+        vlSelfRef.__Vm_traceActivity[0x10U] = 1U;
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
 }
 
 void Vtb___024root___nba_comb__TOP__10(Vtb___024root* vlSelf);
 
-void Vtb___024root__nba_mtask11(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
+void Vtb___024root__nba_mtask12(Vtb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask12\n"); );
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask11\n"); );
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    Verilated::mtaskId(11);
+    Verilated::mtaskId(12);
     if ((7ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_comb__TOP__10(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0x10U] = 1U;
+        vlSelfRef.__Vm_traceActivity[0x11U] = 1U;
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
 }
 
 void Vtb___024root___nba_comb__TOP__11(Vtb___024root* vlSelf);
 
-void Vtb___024root__nba_mtask12(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
+void Vtb___024root__nba_mtask13(Vtb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask13\n"); );
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask12\n"); );
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    Verilated::mtaskId(12);
+    Verilated::mtaskId(13);
     if ((7ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_comb__TOP__11(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0x11U] = 1U;
+        vlSelfRef.__Vm_traceActivity[0x12U] = 1U;
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
 }
 
 void Vtb___024root___nba_comb__TOP__12(Vtb___024root* vlSelf);
 
-void Vtb___024root__nba_mtask13(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
+void Vtb___024root__nba_mtask14(Vtb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask14\n"); );
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask13\n"); );
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    Verilated::mtaskId(13);
+    Verilated::mtaskId(14);
     if ((7ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_comb__TOP__12(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0x12U] = 1U;
+        vlSelfRef.__Vm_traceActivity[0x13U] = 1U;
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
 }
 
 void Vtb___024root___nba_comb__TOP__13(Vtb___024root* vlSelf);
 
-void Vtb___024root__nba_mtask14(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
+void Vtb___024root__nba_mtask15(Vtb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask15\n"); );
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask14\n"); );
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    Verilated::mtaskId(14);
+    Verilated::mtaskId(15);
     if ((7ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_comb__TOP__13(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0x13U] = 1U;
+        vlSelfRef.__Vm_traceActivity[0x14U] = 1U;
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
 }
 
 void Vtb___024root___nba_comb__TOP__14(Vtb___024root* vlSelf);
 
-void Vtb___024root__nba_mtask15(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
+void Vtb___024root__nba_mtask16(Vtb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask16\n"); );
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask15\n"); );
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    Verilated::mtaskId(15);
+    Verilated::mtaskId(16);
     if ((7ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_comb__TOP__14(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0x14U] = 1U;
+        vlSelfRef.__Vm_traceActivity[0x15U] = 1U;
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
 }
 
 void Vtb___024root___nba_comb__TOP__15(Vtb___024root* vlSelf);
 
-void Vtb___024root__nba_mtask16(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
+void Vtb___024root__nba_mtask17(Vtb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask17\n"); );
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask16\n"); );
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    Verilated::mtaskId(16);
+    Verilated::mtaskId(17);
     if ((7ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_comb__TOP__15(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0x15U] = 1U;
+        vlSelfRef.__Vm_traceActivity[0x16U] = 1U;
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
 }
 
 void Vtb___024root___nba_comb__TOP__16(Vtb___024root* vlSelf);
 
-void Vtb___024root__nba_mtask17(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
+void Vtb___024root__nba_mtask18(Vtb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask18\n"); );
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask17\n"); );
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    Verilated::mtaskId(17);
+    Verilated::mtaskId(18);
     if ((7ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_comb__TOP__16(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0x16U] = 1U;
+        vlSelfRef.__Vm_traceActivity[0x17U] = 1U;
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
 }
 
 void Vtb___024root___nba_comb__TOP__17(Vtb___024root* vlSelf);
 
-void Vtb___024root__nba_mtask18(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
+void Vtb___024root__nba_mtask19(Vtb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask19\n"); );
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask18\n"); );
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    Verilated::mtaskId(18);
+    Verilated::mtaskId(19);
     if ((7ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_comb__TOP__17(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0x17U] = 1U;
+        vlSelfRef.__Vm_traceActivity[0x18U] = 1U;
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
 }
 
 void Vtb___024root___nba_comb__TOP__18(Vtb___024root* vlSelf);
 
-void Vtb___024root__nba_mtask19(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
+void Vtb___024root__nba_mtask20(Vtb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask20\n"); );
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask19\n"); );
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    Verilated::mtaskId(19);
+    Verilated::mtaskId(20);
     if ((7ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_comb__TOP__18(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0x18U] = 1U;
+        vlSelfRef.__Vm_traceActivity[0x19U] = 1U;
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
 }
 
 void Vtb___024root___nba_comb__TOP__19(Vtb___024root* vlSelf);
 
-void Vtb___024root__nba_mtask20(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
+void Vtb___024root__nba_mtask21(Vtb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask21\n"); );
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask20\n"); );
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    Verilated::mtaskId(20);
+    Verilated::mtaskId(21);
     if ((7ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_comb__TOP__19(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0x19U] = 1U;
+        vlSelfRef.__Vm_traceActivity[0x1aU] = 1U;
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
 }
 
 void Vtb___024root___nba_comb__TOP__20(Vtb___024root* vlSelf);
 
-void Vtb___024root__nba_mtask21(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
+void Vtb___024root__nba_mtask22(Vtb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask22\n"); );
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask21\n"); );
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    Verilated::mtaskId(21);
+    Verilated::mtaskId(22);
     if ((7ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_comb__TOP__20(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0x1aU] = 1U;
+        vlSelfRef.__Vm_traceActivity[0x1bU] = 1U;
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
 }
 
 void Vtb___024root___nba_comb__TOP__21(Vtb___024root* vlSelf);
 
-void Vtb___024root__nba_mtask22(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
+void Vtb___024root__nba_mtask23(Vtb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask23\n"); );
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask22\n"); );
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    Verilated::mtaskId(22);
+    Verilated::mtaskId(23);
     if ((7ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_comb__TOP__21(vlSelf);
-        vlSelfRef.__Vm_traceActivity[0x1bU] = 1U;
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
 }
 
 void Vtb___024root___nba_comb__TOP__22(Vtb___024root* vlSelf);
 
-void Vtb___024root__nba_mtask23(Vtb___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
+void Vtb___024root__nba_mtask24(Vtb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask24\n"); );
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask23\n"); );
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    Verilated::mtaskId(23);
+    Verilated::mtaskId(24);
     if ((7ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
         Vtb___024root___nba_comb__TOP__22(vlSelf);
         vlSelfRef.__Vm_traceActivity[0x1cU] = 1U;
+    }
+    Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
+}
+
+void Vtb___024root___nba_comb__TOP__23(Vtb___024root* vlSelf);
+
+void Vtb___024root__nba_mtask25(Vtb___024root* vlSelf) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb___024root__nba_mtask25\n"); );
+    Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    auto& vlSelfRef = std::ref(*vlSelf).get();
+    // Body
+    Verilated::mtaskId(25);
+    if ((7ULL & vlSelfRef.__VnbaTriggered.word(0U))) {
+        Vtb___024root___nba_comb__TOP__23(vlSelf);
+        vlSelfRef.__Vm_traceActivity[0x1dU] = 1U;
     }
     Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
 }
@@ -849,26 +831,23 @@ void Vtb___024root____Vthread__nba__0(void* voidSelf, bool even_cycle) {
     // Body
     Vtb___024root* const __restrict vlSelf VL_ATTR_UNUSED = static_cast<Vtb___024root*>(voidSelf);
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    Vtb___024root__nba_mtask0(vlSelf);
-    vlSelf->__Vm_mtaskstate_11.signalUpstreamDone(even_cycle);
-    vlSelf->__Vm_mtaskstate_12.signalUpstreamDone(even_cycle);
-    vlSelf->__Vm_mtaskstate_7.waitUntilUpstreamDone(even_cycle);
-    Vtb___024root__nba_mtask7(vlSelf);
-    vlSelf->__Vm_mtaskstate_8.signalUpstreamDone(even_cycle);
-    Vtb___024root__nba_mtask10(vlSelf);
+    Vtb___024root__nba_mtask4(vlSelf);
+    vlSelf->__Vm_mtaskstate_6.signalUpstreamDone(even_cycle);
+    Vtb___024root__nba_mtask5(vlSelf);
+    vlSelf->__Vm_mtaskstate_7.signalUpstreamDone(even_cycle);
+    Vtb___024root__nba_mtask3(vlSelf);
+    vlSelf->__Vm_mtaskstate_13.signalUpstreamDone(even_cycle);
     vlSelf->__Vm_mtaskstate_14.signalUpstreamDone(even_cycle);
-    vlSelf->__Vm_mtaskstate_13.waitUntilUpstreamDone(even_cycle);
-    Vtb___024root__nba_mtask13(vlSelf);
     vlSelf->__Vm_mtaskstate_15.waitUntilUpstreamDone(even_cycle);
     Vtb___024root__nba_mtask15(vlSelf);
-    vlSelf->__Vm_mtaskstate_16.signalUpstreamDone(even_cycle);
     vlSelf->__Vm_mtaskstate_17.signalUpstreamDone(even_cycle);
     vlSelf->__Vm_mtaskstate_18.signalUpstreamDone(even_cycle);
     vlSelf->__Vm_mtaskstate_20.signalUpstreamDone(even_cycle);
     vlSelf->__Vm_mtaskstate_21.signalUpstreamDone(even_cycle);
-    vlSelf->__Vm_mtaskstate_22.signalUpstreamDone(even_cycle);
+    vlSelf->__Vm_mtaskstate_25.signalUpstreamDone(even_cycle);
+    Vtb___024root__nba_mtask24(vlSelf);
+    Vtb___024root__nba_mtask16(vlSelf);
     Vtb___024root__nba_mtask19(vlSelf);
-    Vtb___024root__nba_mtask23(vlSelf);
     vlSelf->__Vm_mtaskstate_final__nba.signalUpstreamDone(even_cycle);
 }
 
@@ -877,19 +856,23 @@ void Vtb___024root____Vthread__nba__1(void* voidSelf, bool even_cycle) {
     // Body
     Vtb___024root* const __restrict vlSelf VL_ATTR_UNUSED = static_cast<Vtb___024root*>(voidSelf);
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    Vtb___024root__nba_mtask1(vlSelf);
-    vlSelf->__Vm_mtaskstate_11.signalUpstreamDone(even_cycle);
-    vlSelf->__Vm_mtaskstate_12.signalUpstreamDone(even_cycle);
-    vlSelf->__Vm_mtaskstate_15.signalUpstreamDone(even_cycle);
-    vlSelf->__Vm_mtaskstate_8.waitUntilUpstreamDone(even_cycle);
+    Vtb___024root__nba_mtask0(vlSelf);
+    vlSelf->__Vm_mtaskstate_6.waitUntilUpstreamDone(even_cycle);
+    Vtb___024root__nba_mtask6(vlSelf);
+    vlSelf->__Vm_mtaskstate_7.waitUntilUpstreamDone(even_cycle);
+    Vtb___024root__nba_mtask7(vlSelf);
+    vlSelf->__Vm_mtaskstate_10.signalUpstreamDone(even_cycle);
     Vtb___024root__nba_mtask8(vlSelf);
-    vlSelf->__Vm_mtaskstate_13.signalUpstreamDone(even_cycle);
-    vlSelf->__Vm_mtaskstate_14.waitUntilUpstreamDone(even_cycle);
-    Vtb___024root__nba_mtask14(vlSelf);
-    vlSelf->__Vm_mtaskstate_22.waitUntilUpstreamDone(even_cycle);
-    Vtb___024root__nba_mtask22(vlSelf);
-    vlSelf->__Vm_mtaskstate_16.waitUntilUpstreamDone(even_cycle);
-    Vtb___024root__nba_mtask16(vlSelf);
+    vlSelf->__Vm_mtaskstate_9.signalUpstreamDone(even_cycle);
+    Vtb___024root__nba_mtask11(vlSelf);
+    vlSelf->__Vm_mtaskstate_22.signalUpstreamDone(even_cycle);
+    Vtb___024root__nba_mtask12(vlSelf);
+    vlSelf->__Vm_mtaskstate_23.waitUntilUpstreamDone(even_cycle);
+    Vtb___024root__nba_mtask23(vlSelf);
+    vlSelf->__Vm_mtaskstate_25.waitUntilUpstreamDone(even_cycle);
+    Vtb___024root__nba_mtask25(vlSelf);
+    vlSelf->__Vm_mtaskstate_20.waitUntilUpstreamDone(even_cycle);
+    Vtb___024root__nba_mtask20(vlSelf);
     vlSelf->__Vm_mtaskstate_final__nba.signalUpstreamDone(even_cycle);
 }
 
@@ -898,15 +881,21 @@ void Vtb___024root____Vthread__nba__2(void* voidSelf, bool even_cycle) {
     // Body
     Vtb___024root* const __restrict vlSelf VL_ATTR_UNUSED = static_cast<Vtb___024root*>(voidSelf);
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    Vtb___024root__nba_mtask2(vlSelf);
-    vlSelf->__Vm_mtaskstate_12.signalUpstreamDone(even_cycle);
+    Vtb___024root__nba_mtask1(vlSelf);
+    vlSelf->__Vm_mtaskstate_14.signalUpstreamDone(even_cycle);
     vlSelf->__Vm_mtaskstate_15.signalUpstreamDone(even_cycle);
-    vlSelf->__Vm_mtaskstate_11.waitUntilUpstreamDone(even_cycle);
-    Vtb___024root__nba_mtask11(vlSelf);
-    vlSelf->__Vm_mtaskstate_20.waitUntilUpstreamDone(even_cycle);
-    Vtb___024root__nba_mtask20(vlSelf);
-    vlSelf->__Vm_mtaskstate_17.waitUntilUpstreamDone(even_cycle);
-    Vtb___024root__nba_mtask17(vlSelf);
+    vlSelf->__Vm_mtaskstate_10.waitUntilUpstreamDone(even_cycle);
+    Vtb___024root__nba_mtask10(vlSelf);
+    vlSelf->__Vm_mtaskstate_14.signalUpstreamDone(even_cycle);
+    vlSelf->__Vm_mtaskstate_15.signalUpstreamDone(even_cycle);
+    vlSelf->__Vm_mtaskstate_23.signalUpstreamDone(even_cycle);
+    vlSelf->__Vm_mtaskstate_22.waitUntilUpstreamDone(even_cycle);
+    Vtb___024root__nba_mtask22(vlSelf);
+    vlSelf->__Vm_mtaskstate_25.signalUpstreamDone(even_cycle);
+    vlSelf->__Vm_mtaskstate_13.waitUntilUpstreamDone(even_cycle);
+    Vtb___024root__nba_mtask13(vlSelf);
+    vlSelf->__Vm_mtaskstate_21.waitUntilUpstreamDone(even_cycle);
+    Vtb___024root__nba_mtask21(vlSelf);
     vlSelf->__Vm_mtaskstate_final__nba.signalUpstreamDone(even_cycle);
 }
 
@@ -915,20 +904,17 @@ void Vtb___024root____Vthread__nba__3(void* voidSelf, bool even_cycle) {
     // Body
     Vtb___024root* const __restrict vlSelf VL_ATTR_UNUSED = static_cast<Vtb___024root*>(voidSelf);
     Vtb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    Vtb___024root__nba_mtask5(vlSelf);
-    Vtb___024root__nba_mtask4(vlSelf);
-    Vtb___024root__nba_mtask3(vlSelf);
-    Vtb___024root__nba_mtask6(vlSelf);
-    vlSelf->__Vm_mtaskstate_7.signalUpstreamDone(even_cycle);
-    Vtb___024root__nba_mtask9(vlSelf);
-    vlSelf->__Vm_mtaskstate_11.signalUpstreamDone(even_cycle);
+    Vtb___024root__nba_mtask2(vlSelf);
     vlSelf->__Vm_mtaskstate_13.signalUpstreamDone(even_cycle);
-    vlSelf->__Vm_mtaskstate_14.signalUpstreamDone(even_cycle);
-    vlSelf->__Vm_mtaskstate_12.waitUntilUpstreamDone(even_cycle);
-    Vtb___024root__nba_mtask12(vlSelf);
-    vlSelf->__Vm_mtaskstate_21.waitUntilUpstreamDone(even_cycle);
-    Vtb___024root__nba_mtask21(vlSelf);
+    vlSelf->__Vm_mtaskstate_15.signalUpstreamDone(even_cycle);
+    vlSelf->__Vm_mtaskstate_9.waitUntilUpstreamDone(even_cycle);
+    Vtb___024root__nba_mtask9(vlSelf);
+    vlSelf->__Vm_mtaskstate_22.signalUpstreamDone(even_cycle);
+    vlSelf->__Vm_mtaskstate_14.waitUntilUpstreamDone(even_cycle);
+    Vtb___024root__nba_mtask14(vlSelf);
     vlSelf->__Vm_mtaskstate_18.waitUntilUpstreamDone(even_cycle);
     Vtb___024root__nba_mtask18(vlSelf);
+    vlSelf->__Vm_mtaskstate_17.waitUntilUpstreamDone(even_cycle);
+    Vtb___024root__nba_mtask17(vlSelf);
     vlSelf->__Vm_mtaskstate_final__nba.signalUpstreamDone(even_cycle);
 }

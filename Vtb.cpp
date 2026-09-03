@@ -21,11 +21,11 @@ Vtb::Vtb(VerilatedContext* _vcontextp__, const char* _vcname__)
     , joystick_left_i{vlSymsp->TOP.joystick_left_i}
     , joystick_right_i{vlSymsp->TOP.joystick_right_i}
     , joystick_pressed_i{vlSymsp->TOP.joystick_pressed_i}
+    , dip_switches_i{vlSymsp->TOP.dip_switches_i}
     , sevensegment_1_o{vlSymsp->TOP.sevensegment_1_o}
     , sevensegment_2_o{vlSymsp->TOP.sevensegment_2_o}
     , sevensegment_3_o{vlSymsp->TOP.sevensegment_3_o}
     , sevensegment_4_o{vlSymsp->TOP.sevensegment_4_o}
-    , dip_switches_i{vlSymsp->TOP.dip_switches_i}
     , led_r_o{vlSymsp->TOP.led_r_o}
     , led_g_o{vlSymsp->TOP.led_g_o}
     , led_b_o{vlSymsp->TOP.led_b_o}

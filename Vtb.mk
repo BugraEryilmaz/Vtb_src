@@ -26,9 +26,9 @@ ifeq ($(strip $(VERILATOR_ROOT)),)
 endif
 
 # SystemC include directory with systemc.h (from $SYSTEMC_INCLUDE)
-SYSTEMC_INCLUDE ?= 
+SYSTEMC_INCLUDE ?=
 # SystemC library directory with libsystemc.a (from $SYSTEMC_LIBDIR)
-SYSTEMC_LIBDIR ?= 
+SYSTEMC_LIBDIR ?=
 
 ### Switches...
 # C++ code coverage  0/1 (from --prof-c)
@@ -56,6 +56,7 @@ VM_USER_LDLIBS = \
 	-lcppdap \
 	-ldw \
 	-lelf \
+	-ljsoncpp \
 
 # User .cpp files (from .cpp's on Verilator command line)
 VM_USER_CLASSES = \
@@ -72,17 +73,17 @@ include Vtb_classes.mk
 # Include global rules
 include $(VERILATOR_ROOT)/include/verilated.mk
 
-mem.o: mem.cpp 
+mem.o: mem.cpp
 	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST)  -c -o $@ $<
-base64.o: base64.cpp 
+base64.o: base64.cpp
 	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST)  -c -o $@ $<
-dapDefines.o: dapDefines.cpp 
+dapDefines.o: dapDefines.cpp
 	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST)  -c -o $@ $<
-debugAdapter.o: debugAdapter.cpp 
+debugAdapter.o: debugAdapter.cpp
 	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST)  -c -o $@ $<
-pcToLine.o: pcToLine.cpp 
+pcToLine.o: pcToLine.cpp
 	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST)  -c -o $@ $<
-verilator.o: verilator.cpp 
+verilator.o: verilator.cpp
 	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST)  -c -o $@ $<
 
 ### Link rules... (from --exe)
